@@ -1,7 +1,7 @@
 {
-  "project_name": "Test project",
-  "project_slug": "test_project",
-  "github_username": "chris-greening",
+  "project_name": "My Cool Project",
+  "project_slug": "my_cool_project",
   "author_name": "Your Name",
-  "email": "you@example.com"
+  "email": "you@example.com",
+  "github_username": "your-github"
 }
