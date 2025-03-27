@@ -70,33 +70,51 @@ def new(project_path: str):
             print(f"🔗 Adding git remote: {git_remote}")
             subprocess.run(["git", "remote", "add", "origin", git_remote], cwd=str(project_dir))
             subprocess.run(["git", "branch", "-M", "main"], cwd=str(project_dir))
-            subprocess.run(["git", "push", "-u", "origin", "main"], cwd=str(project_dir))
+            # subprocess.run(["git", "push", "-u", "origin", "main"], cwd=str(project_dir))
 
 def deploy_site():
     repo_root = Path.cwd()
-    template_site = Path(__file__).parent / "templates" / "site-template"
+    template_path = Path(__file__).parent / "templates" / "site-template"
 
-    if not template_site.exists():
-        print("❌ No templates/site-template/ found in greening package.")
-        sys.exit(1)
+    # Load context from greening.json
+    config_path = repo_root / "greening.json"
+    extra_context = {}
+    if config_path.exists():
+        with config_path.open() as f:
+            extra_context = json.load(f)
 
+    extra_context.setdefault("project_name", repo_root.name.title())
+    extra_context.setdefault("project_slug", repo_root.name)
+
+    # Use cookiecutter to render the site
     with tempfile.TemporaryDirectory() as tmpdir:
-        tmp_path = Path(tmpdir)
-        shutil.copytree(template_site, tmp_path, dirs_exist_ok=True)
+        cookiecutter(
+            str(template_path),
+            no_input=True,
+            extra_context=extra_context,
+            output_dir=tmpdir
+        )
 
+        # Cookiecutter renders into a subfolder: tmpdir/project_slug/
+        rendered_path = Path(tmpdir) / extra_context["project_slug"]
+
+        # Switch to gh-pages branch (or create it)
         try:
             subprocess.run(["git", "rev-parse", "--verify", "gh-pages"], check=True, stdout=subprocess.DEVNULL)
             subprocess.run(["git", "checkout", "gh-pages"], check=True)
         except subprocess.CalledProcessError:
             subprocess.run(["git", "checkout", "--orphan", "gh-pages"], check=True)
 
+        # Clean current contents
         subprocess.run(["git", "rm", "-rf", "."], check=True)
 
-        for item in tmp_path.iterdir():
+        # Move rendered site into repo root
+        for item in rendered_path.iterdir():
             shutil.move(str(item), str(repo_root / item.name))
 
         subprocess.run(["git", "add", "."], check=True)
         subprocess.run(["git", "commit", "-m", "Deploy Jekyll site"], check=True)
-        subprocess.run(["git", "push", "-f", "origin", "gh-pages"], check=True)
+        # subprocess.run(["git", "push", "-f", "origin", "gh-pages"], check=True)
 
-        print("✅ Deployed Jekyll site to gh-pages branch.")
+        # Return to main
+        subprocess.run(["git", "checkout", "main"], check=True)

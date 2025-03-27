@@ -1,0 +1,11 @@
+main:
+  - title: "Home"
+    url: "/"
+  - title: "About"
+    url: "/about/"
+  - title : "Blog"
+    url: "/blog/"
+  - title : "License"
+    url: "/license/"
+  - title : "Docs"
+    url: "https://spyrograph.readthedocs.io/en/latest/"
