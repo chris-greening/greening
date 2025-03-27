@@ -1,15 +1,7 @@
-import json
 import sys
-import shutil
-import subprocess
-import tempfile
-from pathlib import Path
 
-from cookiecutter.main import cookiecutter
-from cookiecutter.exceptions import OutputDirExistsException
-
-from greening._new import new
-from greening._deploy import deploy_site
+from greening._commands.new import new
+from greening._commands.deploy import deploy_site
 
 def main():
     if len(sys.argv) < 2:

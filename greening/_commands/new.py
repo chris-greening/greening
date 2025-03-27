@@ -1,8 +1,9 @@
 import json
-import shlex
-import subprocess
 from pathlib import Path
 from cookiecutter.main import cookiecutter
+import importlib.resources as pkg_resources
+
+from greening._helpers import _run_git
 
 def new(project_path: str):
     """
@@ -43,7 +44,7 @@ def _scaffold_project(project_dir: Path, context: dict):
     """
     Runs Cookiecutter to scaffold a project using the local template.
     """
-    template_path = Path(__file__).parent / "templates" / "python-package-template"
+    template_path = pkg_resources.files("greening") / "templates" / "python-package-template"
     is_in_place = project_dir == Path.cwd() or project_dir == Path(".")
 
     cookiecutter(
@@ -72,12 +73,4 @@ def _maybe_initialize_git_repo(project_dir: Path, context: dict):
         print(f"🔗 Adding git remote: {git_remote}")
         _run_git(f"git remote add origin {git_remote}", cwd=project_dir)
         _run_git("git branch -M main", cwd=project_dir)
-        _run_git("git push -u origin main", cwd=project_dir)
-
-def _run_git(command: str, cwd: Path):
-    """
-    Runs a full git command string using shlex.split() for safety.
-    e.g. 'git commit -m "message with spaces"'
-    """
-    args = shlex.split(command)
-    subprocess.run(args, cwd=str(cwd), check=True)
+        # _run_git("git push -u origin main", cwd=project_dir)

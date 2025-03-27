@@ -5,6 +5,9 @@ import subprocess
 import tempfile
 from pathlib import Path
 from cookiecutter.main import cookiecutter
+import importlib.resources as pkg_resources
+
+from greening._helpers import _run_git
 
 def deploy_site():
     """
@@ -36,7 +39,7 @@ def _render_site_template(context: dict, repo_root: Path):
     Renders the site template using Cookiecutter and deploys it
     to the gh-pages branch.
     """
-    template_path = Path(__file__).parent / "templates" / "site-template"
+    template_path = pkg_resources.files("greening") / "templates" / "site-template"
 
     with tempfile.TemporaryDirectory() as tmpdir:
         cookiecutter(
@@ -67,7 +70,7 @@ def _deploy_rendered_site(rendered_path: Path, repo_root: Path):
 
     _run_git("git add .", cwd=repo_root)
     _run_git("git commit -m 'Deploy Jekyll site'", cwd=repo_root)
-    _run_git("git push -f origin gh-pages", cwd=repo_root)
+    # _run_git("git push -f origin gh-pages", cwd=repo_root)
     _run_git("git checkout main", cwd=repo_root)
 
 def _run_git(command: str, cwd: Path):
