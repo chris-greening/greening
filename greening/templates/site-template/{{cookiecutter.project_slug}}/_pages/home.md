@@ -1,12 +1,12 @@
 ---
 layout: splash
 permalink: /
-title: spyrograph
+title: {{ cookiecutter.project_name }}
 header:
-  overlay_image: /images/spirograph_boomerang_header.gif
-  cta_label: "<i class='fa fa-download'></i> pip install spyrograph"
-  cta_url: "https://pypi.org/project/spyrograph/"
-excerpt: Elegant mathematics and beautiful geometries with easy-to-use, expressive Python code
+  overlay_image: /images/image.gif
+  cta_label: "<i class='fa fa-download'></i> pip install {{ cookiecutter.project_slug }}"
+  cta_url: "https://pypi.org/project/{{ cookiecutter.project_slug }}/"
+excerpt: {{ cookiecutter.project_slug }}
 
 feature_row:
   - image_path: images/red.PNG
@@ -32,16 +32,16 @@ github:
   - excerpt: '{::nomarkdown}<iframe style="display: inline-block;" src="https://ghbtns.com/github-btn.html?user=mmistakes&repo=minimal-mistakes&type=star&count=true&size=large" frameborder="0" scrolling="0" width="160px" height="30px"></iframe> <iframe style="display: inline-block;" src="https://ghbtns.com/github-btn.html?user=mmistakes&repo=minimal-mistakes&type=fork&count=true&size=large" frameborder="0" scrolling="0" width="158px" height="30px"></iframe>{:/nomarkdown}'
 ---
 
+{% raw %}
 {% include feature_row %}
-
-<p align="center">
-  <img src="https://github.com/chris-greening/spyrograph/blob/gh-pages/images/circle_spinning.gif?raw=true" alt="Sample hypotrochoid drawing showing a circle rolling around the interior of another circle drawing a geometric shape" width="410px">
-</p>
+{% endraw %}
 
 <h2> Recent Blog Posts </h2>
 
+{% raw %}
 {% for post in site.posts limit:3 %}
   {% include archive-single.html %}
 {% endfor %}
+{% endraw %}
 
 [See all blog posts...]({`{` site.url `}`}{`{` site.baseurl `}`}/blog/){: .btn .btn--info}

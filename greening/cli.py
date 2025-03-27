@@ -70,7 +70,7 @@ def new(project_path: str):
             print(f"🔗 Adding git remote: {git_remote}")
             subprocess.run(["git", "remote", "add", "origin", git_remote], cwd=str(project_dir))
             subprocess.run(["git", "branch", "-M", "main"], cwd=str(project_dir))
-            # subprocess.run(["git", "push", "-u", "origin", "main"], cwd=str(project_dir))
+            subprocess.run(["git", "push", "-u", "origin", "main"], cwd=str(project_dir))
 
 def deploy_site():
     repo_root = Path.cwd()
@@ -114,7 +114,7 @@ def deploy_site():
 
         subprocess.run(["git", "add", "."], check=True)
         subprocess.run(["git", "commit", "-m", "Deploy Jekyll site"], check=True)
-        # subprocess.run(["git", "push", "-f", "origin", "gh-pages"], check=True)
+        subprocess.run(["git", "push", "-f", "origin", "gh-pages"], check=True)
 
         # Return to main
         subprocess.run(["git", "checkout", "main"], check=True)

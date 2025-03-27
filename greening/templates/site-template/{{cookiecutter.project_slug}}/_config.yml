@@ -21,11 +21,11 @@ email: {{ cookiecutter.email }}
 name: &name {{ cookiecutter.author_name }}
 description: >- # this means to ignore newlines until "baseurl:"
   Description
-baseurl: "/{{ cookiecutter.project_name }}" # the subpath of your site, e.g. /blog
+baseurl: "/{{ cookiecutter.project_slug }}" # the subpath of your site, e.g. /blog
 url: "https://chris-greening.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: ChrisGreening
 github_username:  chris-greening
-repository: "{{ cookiecutter.github_username }}/{{ cookiecutter.project_name }}"
+repository: "{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}"
 # Build settings
 markdown: kramdown
 highlighter: rouge
