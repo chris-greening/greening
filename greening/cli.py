@@ -8,8 +8,8 @@ from pathlib import Path
 from cookiecutter.main import cookiecutter
 from cookiecutter.exceptions import OutputDirExistsException
 
-from greening.new import new
-from greening.deploy import deploy_site
+from greening._new import new
+from greening._deploy import deploy_site
 
 def main():
     if len(sys.argv) < 2:
