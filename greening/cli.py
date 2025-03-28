@@ -19,6 +19,7 @@ def main():
         init()
     else:
         print("Usage:")
+        print("  greening init")
         print("  greening new")
         print("  greening deploy")
         sys.exit(1)
