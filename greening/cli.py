@@ -2,6 +2,7 @@ import sys
 
 from greening._commands.new import new
 from greening._commands.deploy import deploy_site
+from greening._commands.init import init
 
 def main():
     if len(sys.argv) < 2:
@@ -14,6 +15,8 @@ def main():
         new()
     elif command == "deploy":
         deploy_site()
+    elif command == "init":
+        init()
     else:
         print("Usage:")
         print("  greening new")
