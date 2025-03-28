@@ -116,3 +116,12 @@ It empowers you to publish and polish your creative tools like they were real pr
 
 ## 💚 Created by @chris-greening
 
+Reach out to me if you want to connect or have any questions and I will do my best to get back to you
+* Email:
+  * chris@christophergreening.com
+* Twitter:
+  * [@ChrisGreening](https://twitter.com/ChrisGreening)
+* LinkedIn
+  * [Chris Greening](https://www.linkedin.com/in/chris-greening-646411139/)
+* Personal contact form: 
+  * [www.christophergreening.com](https://www.christophergreening.com/contact)
