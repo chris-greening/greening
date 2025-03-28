@@ -68,4 +68,4 @@ def _maybe_initialize_git_repo(project_dir: Path, context: dict):
         print(f"🔗 Adding git remote: {git_remote}")
         _run_git(f"git remote add origin {git_remote}", cwd=project_dir)
         _run_git("git branch -M main", cwd=project_dir)
-        # _run_git("git push -u origin main", cwd=project_dir)
+        _run_git("git push -u origin main", cwd=project_dir)

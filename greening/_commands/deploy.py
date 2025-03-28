@@ -73,5 +73,5 @@ def _deploy_rendered_site(rendered_path: Path, repo_root: Path):
 
     _run_git("git add .", cwd=repo_root)
     _run_git("git commit -m 'Deploy Jekyll site'", cwd=repo_root)
-    # _run_git("git push -f origin gh-pages", cwd=repo_root)
+    _run_git("git push -f origin gh-pages", cwd=repo_root)
     _run_git("git checkout main", cwd=repo_root)
