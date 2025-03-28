@@ -48,8 +48,9 @@ def _scaffold_project(project_dir: Path, context: dict):
         str(template_path),
         no_input=True,
         extra_context=context,
-        output_dir=str(project_dir),
-        overwrite_if_exists=True
+        output_dir=str(project_dir.parent),           # Avoid nested folder
+        overwrite_if_exists=True,
+        directory=None  # Optional, only if your template is nested inside another
     )
 
 def _maybe_initialize_git_repo(project_dir: Path, context: dict):
