@@ -2,15 +2,15 @@ from pathlib import Path
 
 DEFAULT_YAML = """\
 # Project metadata
-project_name: My Cool Project
-project_slug: my_cool_project
+project_name: My Greening Project
+project_slug: my_greening_project
 author_name: Your Name
 email: your@email.com
 github_username: your-github-handle
 
 # Optional GitHub integration
 # Uncomment to push to a remote
-# git_remote: git@github.com:your-name/my-cool-project.git
+# git_remote: git@github.com:your-name/my-greening-project.git
 # push: true
 """
 
