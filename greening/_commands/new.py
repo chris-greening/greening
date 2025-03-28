@@ -5,22 +5,15 @@ import importlib.resources as pkg_resources
 
 from greening._helpers import _run_git
 
-
-def new(project_path: str):
+def new():
     """
-    Public entrypoint: Scaffolds a new project at the given path,
+    Public entrypoint: Scaffolds a new project in the current directory,
     initializes Git, and optionally pushes to a remote.
     """
-    project_dir = _resolve_project_path(project_path)
+    project_dir = Path.cwd()
     context = _load_project_context(project_dir)
     _scaffold_project(project_dir, context)
     _maybe_initialize_git_repo(project_dir, context)
-
-
-def _resolve_project_path(project_path: str) -> Path:
-    """Resolves and returns the absolute path to the new project."""
-    return Path(project_path).resolve()
-
 
 def _load_project_context(project_dir: Path) -> dict:
     """
@@ -43,22 +36,19 @@ def _load_project_context(project_dir: Path) -> dict:
 
     return context
 
-
 def _scaffold_project(project_dir: Path, context: dict):
     """
     Runs Cookiecutter to scaffold a project using the local template.
     """
     template_path = pkg_resources.files("greening") / "templates" / "python-package-template"
-    is_in_place = project_dir == Path.cwd() or project_dir == Path(".")
 
     cookiecutter(
         str(template_path),
         no_input=True,
         extra_context=context,
-        output_dir=str(project_dir.parent if is_in_place else "."),
+        output_dir=str(project_dir),
         overwrite_if_exists=True
     )
-
 
 def _maybe_initialize_git_repo(project_dir: Path, context: dict):
     """

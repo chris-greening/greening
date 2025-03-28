@@ -10,14 +10,13 @@ def main():
 
     command = sys.argv[1]
 
-    if command == "new" and len(sys.argv) >= 3:
-        project_name = sys.argv[2]
-        new(project_name)
+    if command == "new":
+        new()
     elif command == "deploy":
         deploy_site()
     else:
         print("Usage:")
-        print("  greening new <project_name>")
+        print("  greening new")
         print("  greening deploy")
         sys.exit(1)
 
