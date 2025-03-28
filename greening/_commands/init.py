@@ -12,6 +12,7 @@ github_username: your-github-handle
 # Uncomment to push to a remote
 # git_remote: git@github.com:your-name/my-greening-project.git
 # push: true
+# create_github_repo: false
 """
 
 def init():

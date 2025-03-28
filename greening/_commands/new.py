@@ -1,4 +1,6 @@
+import os
 import yaml
+import requests
 from pathlib import Path
 from cookiecutter.main import cookiecutter
 import importlib.resources as pkg_resources
@@ -53,7 +55,8 @@ def _scaffold_project(project_dir: Path, context: dict):
 def _maybe_initialize_git_repo(project_dir: Path, context: dict):
     """
     Initializes a Git repository if one does not already exist,
-    and pushes to remote if 'git_remote' and 'push: true' are defined in greening.yaml.
+    and pushes to remote if 'push: true' is defined in greening.yaml.
+    Optionally auto-creates the GitHub repo if 'create_github_repo: true' and GITHUB_TOKEN is set.
     """
     if (project_dir / ".git").exists():
         return
@@ -64,7 +67,13 @@ def _maybe_initialize_git_repo(project_dir: Path, context: dict):
     _run_git("git commit -m 'Initial commit'", cwd=project_dir)
 
     git_remote = context.get("git_remote")
+    create_repo = context.get("create_github_repo", False)
     push_enabled = context.get("push", False)
+
+    if not git_remote and create_repo:
+        git_remote = _maybe_create_github_repo(context)
+        if git_remote:
+            context["git_remote"] = git_remote
 
     if git_remote:
         print(f"🔗 Adding git remote: {git_remote}")
@@ -76,3 +85,46 @@ def _maybe_initialize_git_repo(project_dir: Path, context: dict):
             _run_git("git push -u origin main", cwd=project_dir)
         else:
             print("⚠️  Push skipped (set push: true in greening.yaml to enable)")
+
+def _maybe_create_github_repo(context: dict) -> str | None:
+    """
+    Creates a GitHub repo using the GITHUB_TOKEN if configured and enabled.
+    Returns the SSH git remote URL or None.
+    """
+    token = os.getenv("GITHUB_TOKEN")
+    username = context.get("github_username")
+    repo_slug = context.get("project_slug")
+
+    if not token:
+        print("🔒 No GITHUB_TOKEN found. Skipping GitHub repo creation.")
+        return None
+
+    if not username or not repo_slug:
+        print("⚠️ Missing github_username or project_slug. Cannot create repo.")
+        return None
+
+    print(f"📡 Creating repo {username}/{repo_slug} on GitHub...")
+
+    response = requests.post(
+        "https://api.github.com/user/repos",
+        headers={
+            "Authorization": f"token {token}",
+            "Accept": "application/vnd.github+json"
+        },
+        json={
+            "name": repo_slug,
+            "private": False,
+            "auto_init": False,
+            "description": context.get("project_name", "")
+        }
+    )
+
+    if response.status_code == 201:
+        print(f"✅ GitHub repo created: {username}/{repo_slug}")
+        return f"git@github.com:{username}/{repo_slug}.git"
+    elif response.status_code == 422:
+        print(f"⚠️ Repo already exists: {username}/{repo_slug}")
+        return f"git@github.com:{username}/{repo_slug}.git"
+    else:
+        print(f"❌ Failed to create repo: {response.status_code} - {response.text}")
+        return None
