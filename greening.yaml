@@ -4,3 +4,4 @@ github_username: chris-greening
 author_name: Chris Greening
 email: chris@christophergreening.com
 git_remote: git@github.com:chris-greening/test-repo.git
+push: false
