@@ -1,13 +1,13 @@
 # 🌱 Greening
 
-**Greening** is an opinionated, full-stack project automation tool for solo developers and creative coders.
+`greening` is an opinionated, full-stack project automation tool for solo developers and creative coders.
 
 With just a few commands, you can scaffold a production-ready Python package — complete with docs, tests, GitHub Actions workflows, PyPI packaging, and an auto-deployed GitHub Pages site.
 No boilerplate. No setup hell. Just instant polish.
 
 ---
 
-## 🤔 Why Greening?
+## 🤔 Why `greening`?
 
 Most devs never ship their tools — not because the code isn’t good, but because the surrounding friction is too high:
 
@@ -16,7 +16,7 @@ Most devs never ship their tools — not because the code isn’t good, but beca
 - How do I make it look legit?
 - How do I talk about it?
 
-Greening answers all of that in **one opinionated workflow**.
+`greening` answers all of that in **one opinionated workflow**.
 
 ---
 
@@ -76,7 +76,7 @@ Run this in the same directory as your config:
 greening new
 ```
 
-Greening will generate your project in-place and optionally push it to GitHub.
+`greening` will generate your project in-place and optionally push it to GitHub.
 
 ### 4. Deploy the GitHub Pages site
 
@@ -109,7 +109,7 @@ source ~/.bashrc  # or ~/.zshrc
 
 ## ✨ Philosophy
 
-Greening is about **removing friction** and **surfacing the soul of your work** — fast.
+`greening` is about **removing friction** and **surfacing the soul of your work** — fast.
 It empowers you to publish and polish your creative tools like they were real products, because they are.
 
 ---
