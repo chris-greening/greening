@@ -53,7 +53,7 @@ def _scaffold_project(project_dir: Path, context: dict):
 def _maybe_initialize_git_repo(project_dir: Path, context: dict):
     """
     Initializes a Git repository if one does not already exist,
-    and pushes to remote if 'git_remote' is defined in greening.yaml.
+    and pushes to remote if 'git_remote' and 'push: true' are defined in greening.yaml.
     """
     if (project_dir / ".git").exists():
         return
@@ -64,8 +64,15 @@ def _maybe_initialize_git_repo(project_dir: Path, context: dict):
     _run_git("git commit -m 'Initial commit'", cwd=project_dir)
 
     git_remote = context.get("git_remote")
+    push_enabled = context.get("push", False)
+
     if git_remote:
         print(f"🔗 Adding git remote: {git_remote}")
         _run_git(f"git remote add origin {git_remote}", cwd=project_dir)
         _run_git("git branch -M main", cwd=project_dir)
-        _run_git("git push -u origin main", cwd=project_dir)
+
+        if push_enabled:
+            print("🚀 Pushing to GitHub...")
+            _run_git("git push -u origin main", cwd=project_dir)
+        else:
+            print("⚠️  Push skipped (set push: true in greening.yaml to enable)")
