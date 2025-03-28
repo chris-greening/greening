@@ -8,7 +8,6 @@ import importlib.resources as pkg_resources
 
 from greening._helpers import _run_git
 
-
 def deploy_site():
     """
     Public entrypoint: Renders the site-template via Cookiecutter
@@ -32,6 +31,7 @@ def _load_site_context(repo_root: Path) -> dict:
 
     context.setdefault("project_name", repo_root.name.title())
     context.setdefault("project_slug", repo_root.name)
+    context.setdefault("push", False)  # default to no push
 
     return context
 
@@ -52,13 +52,13 @@ def _render_site_template(context: dict, repo_root: Path):
         )
 
         rendered_path = Path(tmpdir) / context["project_slug"]
-        _deploy_rendered_site(rendered_path, repo_root)
+        _deploy_rendered_site(rendered_path, repo_root, context["push"])
 
 
-def _deploy_rendered_site(rendered_path: Path, repo_root: Path):
+def _deploy_rendered_site(rendered_path: Path, repo_root: Path, should_push: bool):
     """
     Checks out or creates the gh-pages branch, clears the working tree,
-    replaces it with the rendered site, commits and pushes.
+    replaces it with the rendered site, commits and optionally pushes.
     """
     try:
         _run_git("git rev-parse --verify gh-pages", cwd=repo_root)
@@ -73,5 +73,11 @@ def _deploy_rendered_site(rendered_path: Path, repo_root: Path):
 
     _run_git("git add .", cwd=repo_root)
     _run_git("git commit -m 'Deploy Jekyll site'", cwd=repo_root)
-    _run_git("git push -f origin gh-pages", cwd=repo_root)
+
+    if should_push:
+        print("🚀 Pushing gh-pages to origin...")
+        _run_git("git push -f origin gh-pages", cwd=repo_root)
+    else:
+        print("⚠️  Push skipped (set push: true in greening.yaml to enable)")
+
     _run_git("git checkout main", cwd=repo_root)
