@@ -1,5 +1,4 @@
-import json
-import shlex
+import yaml
 import shutil
 import subprocess
 import tempfile
@@ -8,6 +7,7 @@ from cookiecutter.main import cookiecutter
 import importlib.resources as pkg_resources
 
 from greening._helpers import _run_git
+
 
 def deploy_site():
     """
@@ -18,21 +18,23 @@ def deploy_site():
     context = _load_site_context(repo_root)
     _render_site_template(context, repo_root)
 
+
 def _load_site_context(repo_root: Path) -> dict:
     """
-    Loads greening.json and builds the context for the site template.
+    Loads greening.yaml and builds the context for the site template.
     """
-    config_path = repo_root / "greening.json"
+    config_path = repo_root / "greening.yaml"
     context = {}
 
     if config_path.exists():
-        with config_path.open() as f:
-            context = json.load(f)
+        with config_path.open("r") as f:
+            context = yaml.safe_load(f) or {}
 
     context.setdefault("project_name", repo_root.name.title())
     context.setdefault("project_slug", repo_root.name)
 
     return context
+
 
 def _render_site_template(context: dict, repo_root: Path):
     """
@@ -51,6 +53,7 @@ def _render_site_template(context: dict, repo_root: Path):
 
         rendered_path = Path(tmpdir) / context["project_slug"]
         _deploy_rendered_site(rendered_path, repo_root)
+
 
 def _deploy_rendered_site(rendered_path: Path, repo_root: Path):
     """
@@ -72,10 +75,3 @@ def _deploy_rendered_site(rendered_path: Path, repo_root: Path):
     _run_git("git commit -m 'Deploy Jekyll site'", cwd=repo_root)
     # _run_git("git push -f origin gh-pages", cwd=repo_root)
     _run_git("git checkout main", cwd=repo_root)
-
-def _run_git(command: str, cwd: Path):
-    """
-    Runs a full git command string using shlex.split() for safety.
-    """
-    args = shlex.split(command)
-    subprocess.run(args, cwd=str(cwd), check=True)
