@@ -22,7 +22,7 @@ Most devs never ship their tools — not because the code isn’t good, but beca
 
 ## ⚙️ What It Does
 
-Greening automates your project creation pipeline:
+`greening` automates your project creation pipeline:
 
 ✅ `greening init` – generates a starter `greening.yaml` config file
 ✅ `greening new` – scaffolds your entire Python project in-place
