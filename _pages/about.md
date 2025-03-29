@@ -6,84 +6,59 @@ excerpt: "greening"
 
 # About Greening
 
-**Greening** is a creative dev automation engine built for solo developers who want to **ship beautiful software fast**—repeatably, scalably, and without wasting time on boilerplate.
+**Greening** is a dev automation engine built to help you **ship beautiful software fast**—repeatably, scalably, and without boilerplate burnout.
 
-This tool is for indie hackers, open-source tinkerers, and makers who want every project to look polished from the start. Greening handles the structure—**you bring the spark**.
-
----
-
-## 💡 Philosophy
-
-Greening is built around a few key beliefs:
-
-- **Ship beautiful software fast**  
-  Your time should go toward building—not wiring up the same files again and again.
-
-- **Repeatable, scalable workflows**  
-  Every project starts from a clean, consistent base that grows with you.
-
-- **Documentation-first, self-explaining projects**  
-  Greening scaffolds documentation and enforces code clarity through self-documenting principles, clean scope, and consistent structure.
-
-- **Opinionated, solo-dev focused**  
-  This tool is made for individuals who want their projects to feel studio-grade. No configuration chaos, just smart defaults that work.
-
-- **Full lifecycle support**  
-  - `greening init` creates your `greening.yaml`
-  - `greening new` scaffolds the project structure
-  - `greening deploy` builds and publishes your site to the `gh-pages` branch
-
-  If configured, Greening can:
-  - Automatically create your GitHub repo
-  - Push the initial commit and site deploy with zero manual setup
+Every project should feel like it’s already ready to launch. Greening helps you start strong, stay consistent, and look professional from the very first commit.
 
 ---
 
-## 🚀 Quickstart
+## 🌱 Why "Greening"?
 
-1. Create a config:
+The name comes from the idea of growth. Of projects, of creators, of craft.
 
-```bash
-greening init
-```
-
-2. Edit the `greening.yaml` that was created:
-
-```yaml
-project_name: My Greening Project
-project_slug: my_greening_project
-author_name: Your Name
-email: you@example.com
-github_username: your-handle
-create_github_repo: true
-push: true
-
-venv:
-  create: true
-  python: python3
-```
-
-3. Scaffold the project:
-
-```bash
-greening new
-```
-
-4. Deploy your GitHub Pages site (optional):
-
-```bash
-greening deploy
-```
+To "green" something is to bring it to life—to make it real, vibrant, and visible. Greening is designed to help you do exactly that with your software ideas.
 
 ---
 
-## 🌱 Why Greening?
+## 💡 The Philosophy
 
-Greening is about growth. Not just of code, but of confidence, habits, and output. It's for creators who want to build with momentum and ship with pride.
+Greening is opinionated by design. It’s built on a few strong principles:
 
-> Make it beautiful.  
-> Make it repeatable.  
-> Make it yours.
+- **Ship fast**  
+  Don’t waste time setting up the same files again and again. Let automation handle it.
 
+- **Make it beautiful by default**  
+  Polished repos, clean docs, and structured projects—baked in from the start.
+
+- **Repeatable, scalable patterns**  
+  Use one config file (`greening.yaml`) to scaffold, document, and publish consistent, high-quality projects.
+
+- **Clean, concise, self-documenting code**  
+  Projects scaffolded by Greening are clear, intentional, and easy to read and extend. Structure and naming guide you naturally.
+
+---
+
+## 🧭 What Greening Does
+
+Greening automates the early lifecycle of a project:
+
+- **\\`greening init\\`** → Creates a starter `greening.yaml` config
+- **\\`greening new\\`** → Scaffolds your project using Cookiecutter templates
+- **\\`greening deploy\\`** → Builds and publishes a static site (like docs or a landing page) to the `gh-pages` branch
+
+With optional GitHub integration, it can:
+- Automatically create a remote repository
+- Push your first commit
+- Deploy your site with zero manual setup
+
+---
+
+## 🛠 For Builders Who Care
+
+Whether you're publishing a library, documenting a tool, or launching your next big idea—Greening gives you the scaffolding, structure, and momentum to do it right from the start.
+
+> Build fast.  
+> Ship proud.  
+> Grow your garden of ideas.
 
 [!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/chrisgreening)
