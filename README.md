@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="media/logo.png" width="800px">
+</p>
+
 # 🌱 Greening
 
 `greening` is an opinionated, full-stack project automation tool for solo developers and creative coders.
