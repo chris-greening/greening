@@ -2,3 +2,7 @@ $primary: #098438;
 $link-color: $primary-color;
 $btn-primary-color: $primary-color;
 @import "air";
+
+.page__footer {
+    background-color: $primary !important;
+}
