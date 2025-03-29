@@ -1,3 +1,9 @@
+---
+permalink: /quickstart/
+title: "Quickstart"
+excerpt: "greening"
+---
+
 # Quickstart
 
 Greening is a dev automation tool for solo developers who want to ship polished software fast, without spending hours setting up the same boilerplate over and over.
