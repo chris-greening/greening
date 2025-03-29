@@ -13,8 +13,8 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: greening
-subtitle: greening
+title:
+subtitle:
 logo: "/images/logo.png"
 teaser: /images/logo.png
 email: chris@christophergreening.com

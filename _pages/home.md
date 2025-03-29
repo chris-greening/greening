@@ -1,12 +1,12 @@
 ---
 layout: splash
 permalink: /
-title: greening test
+title: greening
 header:
   overlay_image:
   cta_label: "<i class='fa fa-download'></i> pip install greening"
   cta_url: "https://pypi.org/project/greening/"
-excerpt: greening test
+excerpt: greening
 
 feature_row:
   - image_path: images/red.PNG
