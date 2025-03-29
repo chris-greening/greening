@@ -3,6 +3,8 @@ main:
     url: "/"
   - title: "About"
     url: "/about/"
+  - title: "Quickstart"
+    url: "/quickstart/"
   - title : "Blog"
     url: "/blog/"
   - title : "License"
