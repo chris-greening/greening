@@ -1,5 +1,3 @@
-// Override the default primary color
-$primary: #098438; // Use your logo green color (or tweak as needed)
+@import "air";
 
-// Re-import the theme with new variables
-// @import "air";
+$primary: #098438;
