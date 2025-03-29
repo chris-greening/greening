@@ -5,6 +5,13 @@
 With just a few commands, you can scaffold a production-ready Python package — complete with docs, tests, GitHub Actions workflows, PyPI packaging, and an auto-deployed GitHub Pages site.
 No boilerplate. No setup hell. Just instant polish.
 
+[![Downloads](https://static.pepy.tech/personalized-badge/greening?period=total&units=international_system&left_color=grey&right_color=brightgreen&left_text=downloads)](https://pepy.tech/project/greening)
+[![Issues](https://img.shields.io/github/issues/chris-greening/greening)](https://github.com/chris-greening/greening/issues)
+[![License](https://img.shields.io/github/license/chris-greening/greening)](LICENSE)
+[![Version](https://img.shields.io/pypi/v/greening?color=brightgreen)](https://pypi.org/project/greening/)
+
+[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/chrisgreening)
+
 ---
 
 ## 🤔 Why `greening`?
