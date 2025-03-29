@@ -107,3 +107,10 @@ footer:
 future: true
 timezone: America/New_York
 og_image: /images/logo.png
+
+sass:
+  style: compressed
+
+assets:
+  css:
+    - /assets/css/custom.scss
