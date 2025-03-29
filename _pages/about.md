@@ -4,8 +4,6 @@ title: "About"
 excerpt: "greening"
 ---
 
-# About Greening
-
 **Greening** is a dev automation engine built to help you **ship beautiful software fast**—repeatably, scalably, and without boilerplate burnout.
 
 Every project should feel like it’s already ready to launch. Greening helps you start strong, stay consistent, and look professional from the very first commit.
