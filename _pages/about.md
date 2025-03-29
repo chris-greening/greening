@@ -42,9 +42,9 @@ Greening is opinionated by design. It’s built on a few strong principles:
 
 Greening automates the early lifecycle of a project:
 
-- **\\`greening init\\`** → Creates a starter `greening.yaml` config
-- **\\`greening new\\`** → Scaffolds your project using Cookiecutter templates
-- **\\`greening deploy\\`** → Builds and publishes a static site (like docs or a landing page) to the `gh-pages` branch
+- **`greening init`** → Creates a starter `greening.yaml` config
+- **`greening new`** → Scaffolds your project using Cookiecutter templates
+- **`greening deploy`** → Builds and publishes a static site (like docs or a landing page) to the `gh-pages` branch
 
 With optional GitHub integration, it can:
 - Automatically create a remote repository
