@@ -1,6 +1,7 @@
 import os
 import yaml
 import requests
+import subprocess
 from pathlib import Path
 from cookiecutter.main import cookiecutter
 import importlib.resources as pkg_resources
@@ -10,11 +11,13 @@ from greening._helpers import _run_git
 def new():
     """
     Public entrypoint: Scaffolds a new project in the current directory,
-    initializes Git, and optionally pushes to a remote.
+    initializes Git, optionally creates a virtual environment,
+    and optionally pushes to a remote.
     """
     project_dir = Path.cwd()
     context = _load_project_context(project_dir)
     _scaffold_project(project_dir, context)
+    _maybe_create_virtualenv(project_dir, context)
     _maybe_initialize_git_repo(project_dir, context)
 
 def _load_project_context(project_dir: Path) -> dict:
@@ -48,16 +51,38 @@ def _scaffold_project(project_dir: Path, context: dict):
         str(template_path),
         no_input=True,
         extra_context=context,
-        output_dir=str(project_dir.parent),           # Avoid nested folder
+        output_dir=str(project_dir.parent),  # Avoid nested folder
         overwrite_if_exists=True,
-        directory=None  # Optional, only if your template is nested inside another
     )
+
+def _maybe_create_virtualenv(project_dir: Path, context: dict):
+    """
+    Creates a virtual environment at 'venv/' if 'venv.create' is true in the config.
+    This is intentionally opinionated: the venv will always be named 'venv'.
+    """
+    venv_config = context.get("venv", {})
+    if not venv_config.get("create", False):
+        return
+
+    venv_path = project_dir / "venv"  # Enforced naming convention
+    python_exe = venv_config.get("python", "python3")
+
+    print(f"🐍 Creating virtual environment at {venv_path}...")
+    try:
+        subprocess.run(
+            [python_exe, "-m", "venv", str(venv_path)],
+            check=True
+        )
+        print("✅ Virtual environment created.")
+    except subprocess.CalledProcessError as e:
+        print(f"❌ Failed to create virtual environment: {e}")
 
 def _maybe_initialize_git_repo(project_dir: Path, context: dict):
     """
     Initializes a Git repository if one does not already exist,
     and pushes to remote if 'push: true' is defined in greening.yaml.
-    Optionally auto-creates the GitHub repo if 'create_github_repo: true' and GITHUB_TOKEN is set.
+    Optionally auto-creates the GitHub repo if 'create_github_repo: true'
+    and GITHUB_TOKEN is set.
     """
     if (project_dir / ".git").exists():
         return

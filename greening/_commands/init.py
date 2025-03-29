@@ -13,6 +13,10 @@ github_username: your-github-handle
 # git_remote: git@github.com:your-name/my-greening-project.git
 # push: true
 # create_github_repo: false
+
+# venv:
+#   create: true         # Whether to create a virtual environment
+#   python: python3.11   # Python interpreter to use (optional)
 """
 
 def init():

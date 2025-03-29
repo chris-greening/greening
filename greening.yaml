@@ -6,3 +6,7 @@ email: chris@christophergreening.com
 git_remote: git@github.com:chris-greening/test-repo.git
 push: false
 create_github_repo: true
+
+venv:
+  create: true         # Whether to create a virtual environment
+  python: python3.11   # Python interpreter to use (optional)
