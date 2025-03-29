@@ -1,0 +1,15 @@
+_site
+.sass-cache
+.jekyll-cache
+.jekyll-metadata
+vendor
+
+spyrograph/
+test.py
+
+build/
+dist/
+docs/
+*.egg-info/
+tests/
+venv/
