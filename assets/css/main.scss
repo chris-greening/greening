@@ -1,3 +1,8 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+search: false
+---
+
 $background-color: #eeeeee !default;
 $text-color: #222831 !default;
 $muted-text-color: #393e46 !default;
@@ -16,3 +21,7 @@ $navicon-link-color-hover: mix(#fff, $text-color, 80%) !default;
 .page__footer-follow .social-icons .svg-inline--fa {
     color: inherit;
 }
+
+@charset "utf-8";
+
+@import "minimal-mistakes"; // main partials
