@@ -9,7 +9,7 @@ header:
 excerpt: greening
 
 feature_row:
-  - image_path: images/red.PNG
+  - image_path: images/syntax_image.png
     image_size: 100px
     alt: ""
     title: "Expressive and consistent syntax"
