@@ -10,4 +10,4 @@ main:
   - title : "License"
     url: "/license/"
   - title : "Docs"
-    url: "https://spyrograph.readthedocs.io/en/latest/"
+    url: "/docs/"
