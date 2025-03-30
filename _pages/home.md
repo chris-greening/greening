@@ -18,7 +18,7 @@ feature_row:
     btn_label: "Learn More"
   - image_path: images/green.PNG
     alt: ""
-    title: "Clear visualizations and animations"
+    title: "Powerful time-saving automations"
     excerpt: ""
     url: ""
     btn_label: "Learn More"

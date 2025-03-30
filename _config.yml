@@ -114,4 +114,4 @@ sass:
 
 assets:
   css:
-    - /assets/css/custom.scss
+    - /assets/css/main.scss
