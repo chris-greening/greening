@@ -3,6 +3,7 @@ import sys
 from greening._commands.new import new
 from greening._commands.deploy import deploy_site
 from greening._commands.init import init
+from greening._commands.init import help
 
 def main():
     if len(sys.argv) < 2:
@@ -17,6 +18,8 @@ def main():
         deploy_site()
     elif command == "init":
         init()
+    elif command == "help":
+        help()
     else:
         print("Usage:")
         print("  greening init")
