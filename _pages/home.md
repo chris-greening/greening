@@ -16,7 +16,8 @@ feature_row:
     excerpt: "Write clean, predictable code with structure that speaks for itself."
     url: ""
     btn_label: "Learn More"
-  - image_path: images/green.PNG
+  - image_path: images/clock_image.png
+    image_size: 100px
     alt: ""
     title: "Powerful time-saving automations"
     excerpt: "Greening automates everything from scaffolding to deployment so you can focus on building."
