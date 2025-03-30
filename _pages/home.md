@@ -23,7 +23,8 @@ feature_row:
     excerpt: "Greening automates everything from scaffolding to deployment so you can focus on building."
     url: ""
     btn_label: "Learn More"
-  - image_path: images/blue.PNG
+  - image_path: images/unlocked_image.png
+    image_size: 100px
     alt: "100% free"
     title: "Completely free and open source"
     excerpt: "No paywalls. No lock-in. Just powerful tooling, built for everyone."
