@@ -3,7 +3,8 @@ layout: splash
 permalink: /
 title: greening
 header:
-  overlay_image: images/splash_image.png
+  overlay_color: "#098438"  # your custom color
+  overlay_filter: "0"       # disables dark overlay filter
   cta_label: "<i class='fa fa-download'></i> pip install greening"
   cta_url: "https://pypi.org/project/greening/"
 excerpt: An opinionated, lightweight project automation tool for solo developers and creative coders
