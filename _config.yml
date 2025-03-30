@@ -15,7 +15,7 @@
 # in the templates via {{ site.myvariable }}.
 title:
 subtitle:
-logo: "/images/logo.png"
+logo: "/images/logo_small.png"
 teaser: /images/logo.png
 email: chris@christophergreening.com
 name: &name Chris Greening
