@@ -65,6 +65,12 @@ author:
 #   - vendor/gems/
 #   - vendor/ruby/
 
+analytics:
+  provider: "google-gtag" # false (default), "google", "google-universal", "custom"
+  google:
+    tracking_id: "G-3LGZ35J157"
+    anonymize_ip: false
+
 defaults: 
   # _posts
   - scope: 
