@@ -3,6 +3,7 @@ layout: splash
 permalink: /
 title: greening
 header:
+  overlay_image: images/splash_image.png
   cta_label: "<i class='fa fa-download'></i> pip install greening"
   cta_url: "https://pypi.org/project/greening/"
 excerpt: An opinionated, lightweight project automation tool for solo developers and creative coders
