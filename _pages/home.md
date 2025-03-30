@@ -14,14 +14,14 @@ feature_row:
     alt: ""
     title: "Expressive and consistent syntax"
     excerpt: "Write clean, predictable code with structure that speaks for itself."
-    url: ""
+    url: "/about/"
     btn_label: "Learn More"
   - image_path: images/clock_image.png
     image_size: 100px
     alt: ""
     title: "Powerful time-saving automations"
     excerpt: "Greening automates everything from scaffolding to deployment so you can focus on building."
-    url: ""
+    url: "/quickstart/"
     btn_label: "Learn More"
   - image_path: images/unlocked_image.png
     image_size: 100px
