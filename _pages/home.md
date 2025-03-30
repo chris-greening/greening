@@ -13,19 +13,19 @@ feature_row:
     image_size: 100px
     alt: ""
     title: "Expressive and consistent syntax"
-    excerpt: ""
+    excerpt: "Write clean, predictable code with structure that speaks for itself."
     url: ""
     btn_label: "Learn More"
   - image_path: images/green.PNG
     alt: ""
     title: "Powerful time-saving automations"
-    excerpt: ""
+    excerpt: "Greening automates everything from scaffolding to deployment so you can focus on building."
     url: ""
     btn_label: "Learn More"
   - image_path: images/blue.PNG
     alt: "100% free"
     title: "Completely free and open source"
-    excerpt: ""
+    excerpt: "No paywalls. No lock-in. Just powerful tooling, built for everyone."
     url: "/license/"
     btn_label: "Learn More"
 github:
