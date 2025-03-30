@@ -1,6 +1,6 @@
 [project]
 name = "greening"
-version = "0.2.0"
+version = "0.3.0"
 description = "A creative dev automation engine for launching, documenting, and publishing projects"
 authors = [
     { name="Christopher Greening", email="chris@christophergreening.com" }
