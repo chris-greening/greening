@@ -3,7 +3,7 @@ import sys
 from greening._commands.new import new
 from greening._commands.deploy import deploy_site
 from greening._commands.init import init
-from greening._commands.init import help
+from greening._commands.help import help
 
 def main():
     if len(sys.argv) < 2:
