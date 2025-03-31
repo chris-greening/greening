@@ -16,6 +16,7 @@ def new():
     """
     project_dir = Path.cwd()
     context = _load_project_context(project_dir)
+    print("🧪 Final context passed to Cookiecutter:")
     _scaffold_project(project_dir, context)
     _maybe_create_virtualenv(project_dir, context)
     _maybe_initialize_git_repo(project_dir, context)
@@ -91,6 +92,7 @@ def _maybe_initialize_git_repo(project_dir: Path, context: dict):
     _run_git("git init", cwd=project_dir)
     _run_git("git add .", cwd=project_dir)
     _run_git("git commit -m 'Initial commit'", cwd=project_dir)
+    _run_git("git branch -M main", cwd=project_dir)
 
     git_remote = context.get("git_remote")
     create_repo = context.get("create_github_repo", False)
@@ -104,7 +106,6 @@ def _maybe_initialize_git_repo(project_dir: Path, context: dict):
     if git_remote:
         print(f"🔗 Adding git remote: {git_remote}")
         _run_git(f"git remote add origin {git_remote}", cwd=project_dir)
-        _run_git("git branch -M main", cwd=project_dir)
 
         if push_enabled:
             print("🚀 Pushing to GitHub...")

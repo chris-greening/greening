@@ -42,7 +42,6 @@ def _render_site_template(context: dict, repo_root: Path):
     to the gh-pages branch.
     """
     template_path = pkg_resources.files("greening") / "templates" / "site-template"
-
     with tempfile.TemporaryDirectory() as tmpdir:
         cookiecutter(
             str(template_path),
