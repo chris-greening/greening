@@ -17,6 +17,8 @@ github_username: your-github-handle
 # venv:
 #   create: true         # Whether to create a virtual environment
 #   python: python3   # Python interpreter to use (optional)
+
+# google_analytics: G-XXXXXXXXXX
 """
 
 def init():

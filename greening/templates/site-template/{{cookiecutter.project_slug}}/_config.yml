@@ -52,11 +52,19 @@ plugins:
 #   linkedin         : "chris-greening-dev"
 #   twitter          : *twitter
 
+{% if cookiecutter.google_analytics | default(false) %}
+analytics:
+  provider: "google-gtag" # false (default), "google", "google-universal", "custom"
+  google:
+    tracking_id: {{ cookiecutter.google_analytics }}
+    anonymize_ip: false
+{% else %}
 # analytics:
 #   provider: "google-gtag" # false (default), "google", "google-universal", "custom"
 #   google:
-#     tracking_id: "ID_FROM_GA_HERE"
+#     tracking_id: G-XXXXXXXXXX
 #     anonymize_ip: false
+{% endif %}
 
 google_site_verification: "GOOGLE_SITE_VERIFICATION_HERE"
 # Exclude from processing.
