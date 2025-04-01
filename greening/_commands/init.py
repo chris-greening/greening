@@ -11,7 +11,7 @@ github_username: your-github-handle
 # Optional GitHub integration
 # Uncomment to push to a remote
 # git_remote: git@github.com:your-name/my-greening-project.git
-# push: true
+push: false
 # create_github_repo: false
 
 # venv:

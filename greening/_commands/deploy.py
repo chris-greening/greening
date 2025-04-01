@@ -14,45 +14,43 @@ def deploy_site():
     and deploys it to the gh-pages branch of the current repo.
     """
     repo_root = Path.cwd()
-    context = _load_site_context(repo_root)
+    context = _load_project_context(repo_root)
     _render_site_template(context, repo_root)
 
-
-def _load_site_context(repo_root: Path) -> dict:
+def _load_project_context(project_dir: Path) -> dict:
     """
-    Loads greening.yaml and builds the context for the site template.
+    Loads greening.yaml if present and builds the full context
+    for the cookiecutter template.
     """
-    config_path = repo_root / "greening.yaml"
+    config_path = project_dir / "greening.yaml"
     context = {}
 
     if config_path.exists():
+        print(f"🔧 Using {config_path} for extra context")
         with config_path.open("r") as f:
             context = yaml.safe_load(f) or {}
 
-    context.setdefault("project_name", repo_root.name.title())
-    context.setdefault("project_slug", repo_root.name)
-    context.setdefault("push", False)  # default to no push
-
+    project_slug = project_dir.name
+    context.update({
+        "project_name": project_slug.replace("_", " ").title(),
+        "project_slug": project_slug
+    })
+    print(context)
     return context
 
-
 def _render_site_template(context: dict, repo_root: Path):
-    """
-    Renders the site template using Cookiecutter and deploys it
-    to the gh-pages branch.
-    """
     template_path = pkg_resources.files("greening") / "templates" / "site-template"
     with tempfile.TemporaryDirectory() as tmpdir:
         cookiecutter(
             str(template_path),
             no_input=True,
-            extra_context=context,
-            output_dir=tmpdir
+            extra_context=context,  # ← don't nest inside {"cookiecutter": ...}
+            output_dir=tmpdir,
+            overwrite_if_exists=True
         )
-
+        print(context)
         rendered_path = Path(tmpdir) / context["project_slug"]
         _deploy_rendered_site(rendered_path, repo_root, context["push"])
-
 
 def _deploy_rendered_site(rendered_path: Path, repo_root: Path, should_push: bool):
     """

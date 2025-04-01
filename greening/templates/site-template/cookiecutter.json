@@ -3,5 +3,6 @@
   "project_slug": "my_cool_project",
   "author_name": "Your Name",
   "email": "you@example.com",
-  "github_username": "your-github"
+  "github_username": "your-github",
+  "google_analytics": "your-google-analytics"
 }
