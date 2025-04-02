@@ -1,11 +1,13 @@
 import os
-import yaml
 import requests
 import subprocess
 from pathlib import Path
 from cookiecutter.main import cookiecutter
 import importlib.resources as pkg_resources
+import shutil
+import tempfile
 
+from greening.greening_config import GreeningConfig
 from greening._helpers import _run_git
 
 def new():
@@ -14,58 +16,47 @@ def new():
     initializes Git, optionally creates a virtual environment,
     and optionally pushes to a remote.
     """
-    project_dir = Path.cwd()
-    context = _load_project_context(project_dir)
+    config = GreeningConfig()
     print("🧪 Final context passed to Cookiecutter:")
-    _scaffold_project(project_dir, context)
-    _maybe_create_virtualenv(project_dir, context)
-    _maybe_initialize_git_repo(project_dir, context)
+    _scaffold_project(config)
+    _maybe_create_virtualenv(config)
+    _maybe_initialize_git_repo(config)
 
-def _load_project_context(project_dir: Path) -> dict:
-    """
-    Loads greening.yaml if present and builds the full context
-    for the cookiecutter template.
-    """
-    config_path = project_dir / "greening.yaml"
-    context = {}
-
-    if config_path.exists():
-        print(f"🔧 Using {config_path} for extra context")
-        with config_path.open("r") as f:
-            context = yaml.safe_load(f) or {}
-
-    project_slug = project_dir.name
-    context.update({
-        "project_name": project_slug.replace("_", " ").title(),
-        "project_slug": project_slug,
-    })
-
-    return context
-
-def _scaffold_project(project_dir: Path, context: dict):
-    """
-    Runs Cookiecutter to scaffold a project using the local template.
-    """
+def _scaffold_project(config: GreeningConfig):
     template_path = pkg_resources.files("greening") / "templates" / "python-package-template"
 
-    cookiecutter(
-        str(template_path),
-        no_input=True,
-        extra_context=context,
-        output_dir=str(project_dir.parent),  # Avoid nested folder
-        overwrite_if_exists=True,
-    )
+    with tempfile.TemporaryDirectory() as tmpdir:
+        cookiecutter(
+            str(template_path),
+            no_input=True,
+            extra_context=config.to_cookiecutter_context(),
+            output_dir=tmpdir,
+            overwrite_if_exists=True,
+        )
 
-def _maybe_create_virtualenv(project_dir: Path, context: dict):
+        rendered_path = Path(tmpdir) / config.data["project_slug"]
+
+        # 🔥 Move everything from rendered_path into current directory
+        for item in rendered_path.iterdir():
+            dest = config.path.parent / item.name
+            if dest.exists():
+                if dest.is_dir():
+                    shutil.rmtree(dest)
+                else:
+                    dest.unlink()
+            shutil.move(str(item), str(dest))
+
+        print(f"✅ Project files copied into {config.path.parent}")
+
+def _maybe_create_virtualenv(config: GreeningConfig):
     """
     Creates a virtual environment at 'venv/' if 'venv.create' is true in the config.
-    This is intentionally opinionated: the venv will always be named 'venv'.
     """
-    venv_config = context.get("venv", {})
+    venv_config = config.data.get("venv", {})
     if not venv_config.get("create", False):
         return
 
-    venv_path = project_dir / "venv"  # Enforced naming convention
+    venv_path = config.path.parent / "venv"
     python_exe = venv_config.get("python", "python3")
 
     print(f"🐍 Creating virtual environment at {venv_path}...")
@@ -78,13 +69,12 @@ def _maybe_create_virtualenv(project_dir: Path, context: dict):
     except subprocess.CalledProcessError as e:
         print(f"❌ Failed to create virtual environment: {e}")
 
-def _maybe_initialize_git_repo(project_dir: Path, context: dict):
+def _maybe_initialize_git_repo(config: GreeningConfig):
     """
-    Initializes a Git repository if one does not already exist,
-    and pushes to remote if 'push: true' is defined in greening.yaml.
-    Optionally auto-creates the GitHub repo if 'create_github_repo: true'
-    and GITHUB_TOKEN is set.
+    Initializes a Git repository and pushes to remote if specified.
     """
+    project_dir = config.path.parent
+
     if (project_dir / ".git").exists():
         return
 
@@ -94,14 +84,14 @@ def _maybe_initialize_git_repo(project_dir: Path, context: dict):
     _run_git("git commit -m 'Initial commit'", cwd=project_dir)
     _run_git("git branch -M main", cwd=project_dir)
 
-    git_remote = context.get("git_remote")
-    create_repo = context.get("create_github_repo", False)
-    push_enabled = context.get("push", False)
+    git_remote = config.data.get("git_remote")
+    create_repo = config.data.get("create_github_repo", False)
+    push_enabled = config.data.get("push", False)
 
     if not git_remote and create_repo:
-        git_remote = _maybe_create_github_repo(context)
+        git_remote = _maybe_create_github_repo(config)
         if git_remote:
-            context["git_remote"] = git_remote
+            config.data["git_remote"] = git_remote
 
     if git_remote:
         print(f"🔗 Adding git remote: {git_remote}")
@@ -113,14 +103,13 @@ def _maybe_initialize_git_repo(project_dir: Path, context: dict):
         else:
             print("⚠️  Push skipped (set push: true in greening.yaml to enable)")
 
-def _maybe_create_github_repo(context: dict) -> str | None:
+def _maybe_create_github_repo(config: GreeningConfig) -> str | None:
     """
-    Creates a GitHub repo using the GITHUB_TOKEN if configured and enabled.
-    Returns the SSH git remote URL or None.
+    Creates a GitHub repo using the GITHUB_TOKEN.
     """
     token = os.getenv("GITHUB_TOKEN")
-    username = context.get("github_username")
-    repo_slug = context.get("project_slug")
+    username = config.data.get("github_username")
+    repo_slug = config.data.get("project_slug")
 
     if not token:
         print("🔒 No GITHUB_TOKEN found. Skipping GitHub repo creation.")
@@ -142,7 +131,7 @@ def _maybe_create_github_repo(context: dict) -> str | None:
             "name": repo_slug,
             "private": False,
             "auto_init": False,
-            "description": context.get("project_name", "")
+            "description": config.data.get("project_name", "")
         }
     )
 
