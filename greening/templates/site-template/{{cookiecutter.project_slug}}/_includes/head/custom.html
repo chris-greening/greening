@@ -1,9 +1,21 @@
-<!-- Google tag (gtag.js)
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-4ZYC1JYYJ3"></script>
+{% if cookiecutter.google_analytics | default(false) %}
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ cookiecutter.google_analytics }}"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag() { dataLayer.push(arguments); }
   gtag('js', new Date());
 
-  gtag('config', 'G-4ZYC1JYYJ3');
+  gtag('config', '{{ cookiecutter.google_analytics }}');
+</script>
+{% else %}
+<!-- Google tag (gtag.js)
+<script async src="https://www.googletagmanager.com/gtag/js?id=INSERT_GOOGLE_ANALYTICS_TAG_HERE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+
+  gtag('config', 'INSERT_GOOGLE_ANALYTICS_TAG_HERE');
 </script> -->
+{% endif %}

@@ -23,8 +23,8 @@ description: >- # this means to ignore newlines until "baseurl:"
   Description
 baseurl: "/{{ cookiecutter.project_slug }}" # the subpath of your site, e.g. /blog
 url: "https://chris-greening.github.io" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: ChrisGreening
-github_username:  chris-greening
+# twitter_username: ChrisGreening
+github_username:  {{ cookiecutter.github_username }}
 repository: "{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}"
 # Build settings
 markdown: kramdown
@@ -43,12 +43,12 @@ plugins:
 
 # author:
 #   name             : *name
-#   avatar           : "images/chris-greening.jpg"
-#   bio              : "Software engineer particularly fond of Python and R"
+#   avatar           : "images/pfp.jpg"
+#   bio              : "My bio"
 #   location         : "New York metro area"
-#   uri              : "https://www.christophergreening.com/"
-#   email            : "chris@christophergreening.com"
-#   github           : "chris-greening"
+#   uri              : "https://www.link_to_my_example_website.com/"
+#   email            : "{{ cookiecutter.email }}"
+#   github           : "{{ cookiecutter.github_username }}"
 #   linkedin         : "chris-greening-dev"
 #   twitter          : *twitter
 

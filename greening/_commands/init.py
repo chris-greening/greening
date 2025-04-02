@@ -1,32 +1,9 @@
-from pathlib import Path
-
-DEFAULT_YAML = """\
-# Project metadata
-project_name: My Greening Project
-project_slug: my_greening_project
-author_name: Your Name
-email: your@email.com
-github_username: your-github-handle
-
-# Optional GitHub integration
-# Uncomment to push to a remote
-# git_remote: git@github.com:your-name/my-greening-project.git
-push: false
-# create_github_repo: false
-
-# venv:
-#   create: true         # Whether to create a virtual environment
-#   python: python3   # Python interpreter to use (optional)
-
-# google_analytics: G-XXXXXXXXXX
-"""
+from greening.greening_config import GreeningConfig
 
 def init():
-    config_path = Path.cwd() / "greening.yaml"
+    config = GreeningConfig()
 
-    if config_path.exists():
+    if config.path.exists():
         print("⚠️ greening.yaml already exists.")
-        return
-
-    config_path.write_text(DEFAULT_YAML)
-    print(f"✅ Created default greening.yaml at {config_path}")
+    else:
+        config.write_default()

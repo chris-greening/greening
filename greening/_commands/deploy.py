@@ -1,4 +1,3 @@
-import yaml
 import shutil
 import subprocess
 import tempfile
@@ -6,6 +5,7 @@ from pathlib import Path
 from cookiecutter.main import cookiecutter
 import importlib.resources as pkg_resources
 
+from greening.greening_config import GreeningConfig
 from greening._helpers import _run_git
 
 def deploy_site():
@@ -13,50 +13,35 @@ def deploy_site():
     Public entrypoint: Renders the site-template via Cookiecutter
     and deploys it to the gh-pages branch of the current repo.
     """
-    repo_root = Path.cwd()
-    context = _load_project_context(repo_root)
-    _render_site_template(context, repo_root)
+    config = GreeningConfig()
+    _render_site_template(config)
 
-def _load_project_context(project_dir: Path) -> dict:
+def _render_site_template(config: GreeningConfig):
     """
-    Loads greening.yaml if present and builds the full context
-    for the cookiecutter template.
+    Renders the site template using Cookiecutter and deploys it.
     """
-    config_path = project_dir / "greening.yaml"
-    context = {}
-
-    if config_path.exists():
-        print(f"🔧 Using {config_path} for extra context")
-        with config_path.open("r") as f:
-            context = yaml.safe_load(f) or {}
-
-    project_slug = project_dir.name
-    context.update({
-        "project_name": project_slug.replace("_", " ").title(),
-        "project_slug": project_slug
-    })
-    print(context)
-    return context
-
-def _render_site_template(context: dict, repo_root: Path):
     template_path = pkg_resources.files("greening") / "templates" / "site-template"
+
     with tempfile.TemporaryDirectory() as tmpdir:
         cookiecutter(
             str(template_path),
             no_input=True,
-            extra_context=context,  # ← don't nest inside {"cookiecutter": ...}
+            extra_context=config.to_cookiecutter_context(),
             output_dir=tmpdir,
             overwrite_if_exists=True
         )
-        print(context)
-        rendered_path = Path(tmpdir) / context["project_slug"]
-        _deploy_rendered_site(rendered_path, repo_root, context["push"])
 
-def _deploy_rendered_site(rendered_path: Path, repo_root: Path, should_push: bool):
+        rendered_path = Path(tmpdir) / config.data["project_slug"]
+        _deploy_rendered_site(rendered_path, config)
+
+def _deploy_rendered_site(rendered_path: Path, config: GreeningConfig):
     """
     Checks out or creates the gh-pages branch, clears the working tree,
     replaces it with the rendered site, commits and optionally pushes.
     """
+    repo_root = config.path.parent
+    should_push = config.data.get("push", False)
+
     try:
         _run_git("git rev-parse --verify gh-pages", cwd=repo_root)
         _run_git("git checkout gh-pages", cwd=repo_root)
