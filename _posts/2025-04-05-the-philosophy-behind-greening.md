@@ -1,6 +1,6 @@
 ---
 title: "The Philosophy Behind Greening: Developer Momentum"
-date: 2025-04-04 12:00:00 -0500
+date: 2025-04-04
 tags: [philosophy, developer-experience, productivity, automation, opensource]
 ---
 
