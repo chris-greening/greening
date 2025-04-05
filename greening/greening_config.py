@@ -14,7 +14,7 @@ github_username: {get_git_config_username() or "your-github-username"}
 
 # Optional GitHub integration
 # Uncomment to push to a remote
-# git_remote: git@github.com:your-name/my-greening-project.git
+# git_remote: git@github.com:{get_git_config_username() or "your-github-username"}/my-greening-project.git
 push: false
 create_github_repo: false
 
