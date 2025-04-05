@@ -16,6 +16,25 @@ def deploy_site():
     config = GreeningConfig()
     _render_site_template(config)
 
+def help_deploy():
+    print("""Usage: greening deploy [OPTIONS]
+
+Deploy a documentation site using GitHub Pages.
+
+This command generates and deploys a Jekyll site (using the Minimal Mistakes theme) based on your project metadata in greening.yaml.
+
+Options:
+  --no-push          Build the site locally but do not push to GitHub
+  --force            Force overwrite of existing GitHub Pages branch
+  --dry-run          Show what would happen without making changes
+  --help             Show this help message and exit
+
+Examples:
+  greening deploy
+  greening deploy --dry-run
+  greening deploy --no-push
+""")
+
 def _render_site_template(config: GreeningConfig):
     """
     Renders the site template using Cookiecutter and deploys it.
