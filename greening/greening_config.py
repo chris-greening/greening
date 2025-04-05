@@ -1,14 +1,16 @@
 from pathlib import Path
 import yaml
 
+from greening._helpers import get_github_username
+
 class GreeningConfig:
-    DEFAULT_YAML = """\
+    DEFAULT_YAML = f"""\
 # Project metadata
 project_name: My Greening Project
 project_slug: my_greening_project
 author_name: Your Name
 email: your@email.com
-github_username: your-github-handle
+github_username: {get_github_username() or "your-github-username"}
 
 # Optional GitHub integration
 # Uncomment to push to a remote
@@ -52,3 +54,5 @@ venv:
 
     def to_cookiecutter_context(self):
         return self.data
+
+

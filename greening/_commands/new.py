@@ -6,6 +6,7 @@ from cookiecutter.main import cookiecutter
 import importlib.resources as pkg_resources
 import shutil
 import tempfile
+from typing import Union
 
 from greening.greening_config import GreeningConfig
 from greening._helpers import _run_git
@@ -103,7 +104,7 @@ def _maybe_initialize_git_repo(config: GreeningConfig):
         else:
             print("⚠️  Push skipped (set push: true in greening.yaml to enable)")
 
-def _maybe_create_github_repo(config: GreeningConfig) -> str | None:
+def _maybe_create_github_repo(config: GreeningConfig) -> Union[str, None]:
     """
     Creates a GitHub repo using the GITHUB_TOKEN.
     """
