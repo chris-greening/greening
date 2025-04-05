@@ -16,9 +16,9 @@ github_username: your-github-handle
 push: false
 # create_github_repo: false
 
-# venv:
-#   create: true         # Whether to create a virtual environment
-#   python: python3      # Python interpreter to use (optional)
+venv:
+   create: false         # Whether to create a virtual environment
+   python: python3      # Python interpreter to use (optional)
 
 # google_analytics: G-XXXXXXXXXX
 """
