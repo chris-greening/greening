@@ -1,9 +1,9 @@
 import sys
 
-from greening._commands.new import new
-from greening._commands.deploy import deploy_site
-from greening._commands.init import init
-from greening._commands.help import help
+from greening._commands.new import new, help_new
+from greening._commands.deploy import deploy_site, help_deploy
+from greening._commands.init import init, help_init
+from greening._commands.help import help as general_help
 
 def main():
     if len(sys.argv) < 2:
@@ -11,20 +11,36 @@ def main():
         sys.exit(1)
 
     command = sys.argv[1]
+    args = sys.argv[2:]
 
     if command == "new":
-        new()
+        if "--help" in args:
+            help_new()
+        else:
+            new()
     elif command == "deploy":
-        deploy_site()
+        if "--help" in args:
+            help_deploy()
+        else:
+            deploy_site()
     elif command == "init":
-        init()
+        if "--help" in args:
+            help_init()
+        else:
+            init()
     elif command == "help":
-        help()
+        if args:
+            cmd = args[0]
+            if cmd == "new":
+                help_new()
+            elif cmd == "deploy":
+                help_deploy()
+            elif cmd == "init":
+                help_init()
+            else:
+                print(f"Unknown command: {cmd}")
+                general_help()
+        else:
+            general_help()
     else:
-        print("Usage:")
-        print("  greening init")
-        print("  greening new")
-        print("  greening deploy")
-        sys.exit(1)
-
-
+        general_help()
