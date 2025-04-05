@@ -116,6 +116,8 @@ Then run:
 source ~/.bashrc  # or ~/.zshrc
 ```
 
+See this [blog post](https://chris-greening.github.io/greening/how-to/github/setup/2024/04/04/how-to-get-github-token.html) for more
+
 ---
 
 ## ✨ Philosophy
