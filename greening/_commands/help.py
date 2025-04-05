@@ -1,4 +1,4 @@
-def help():
+def general_help():
     print("""
 🌿 Greening — Ship Beautiful Software Fast
 -----------------------------------------
