@@ -1,7 +1,6 @@
 ---
 title: "🌱 New Feature: Beautiful Per-Command Help for the Greening CLI"
 date: 2024-04-05
-layout: post
 categories: [features]
 ---
 
