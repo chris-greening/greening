@@ -3,7 +3,7 @@ import requests
 import subprocess
 from pathlib import Path
 from cookiecutter.main import cookiecutter
-import importlib.resources as pkg_resources
+from importlib_resources import files
 import shutil
 import tempfile
 from typing import Union
@@ -23,8 +23,26 @@ def new():
     _maybe_create_virtualenv(config)
     _maybe_initialize_git_repo(config)
 
+def help_new():
+    print("""Usage: greening new [OPTIONS]
+
+Scaffold a new Python project using greening.yaml.
+
+This command uses your greening.yaml configuration to generate a full project structure based on a customizable template.
+It can also automatically:
+- Initialize a GitHub repository
+- Create and activate a virtual environment
+- Commit and push the project to GitHub
+
+Options:
+  --help              Show this message and exit.
+
+Examples:
+  greening new
+""")
+
 def _scaffold_project(config: GreeningConfig):
-    template_path = pkg_resources.files("greening") / "templates" / "python-package-template"
+    template_path = files("greening") / "templates" / "python-package-template"
 
     with tempfile.TemporaryDirectory() as tmpdir:
         cookiecutter(
