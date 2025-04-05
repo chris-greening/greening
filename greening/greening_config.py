@@ -1,7 +1,7 @@
 from pathlib import Path
 import yaml
 
-from greening._helpers import get_github_username
+from greening._helpers import get_git_config_username, get_git_config_email
 
 class GreeningConfig:
     DEFAULT_YAML = f"""\
@@ -9,8 +9,8 @@ class GreeningConfig:
 project_name: My Greening Project
 project_slug: my_greening_project
 author_name: Your Name
-email: your@email.com
-github_username: {get_github_username() or "your-github-username"}
+email: {get_git_config_email() or "your@email.com"}
+github_username: {get_git_config_username() or "your-github-username"}
 
 # Optional GitHub integration
 # Uncomment to push to a remote
