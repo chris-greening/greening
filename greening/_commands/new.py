@@ -3,7 +3,7 @@ import requests
 import subprocess
 from pathlib import Path
 from cookiecutter.main import cookiecutter
-import importlib.resources as resource_filename
+from importlib_resources import files
 import shutil
 import tempfile
 from typing import Union
@@ -42,7 +42,7 @@ Examples:
 """)
 
 def _scaffold_project(config: GreeningConfig):
-    template_path = resource_filename("greening", "templates/python-package-template")
+    template_path = files("greening") / "templates" / "python-package-template"
 
     with tempfile.TemporaryDirectory() as tmpdir:
         cookiecutter(

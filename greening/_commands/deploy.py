@@ -3,7 +3,7 @@ import subprocess
 import tempfile
 from pathlib import Path
 from cookiecutter.main import cookiecutter
-import importlib.resources as resource_filename
+from importlib_resources import files
 
 from greening.greening_config import GreeningConfig
 from greening._helpers import _run_git
@@ -39,7 +39,7 @@ def _render_site_template(config: GreeningConfig):
     """
     Renders the site template using Cookiecutter and deploys it.
     """
-    template_path = resource_filename("greening", "templates/site-template")
+    template_path = files("greening") / "templates" / "site-template"
 
     with tempfile.TemporaryDirectory() as tmpdir:
         cookiecutter(
