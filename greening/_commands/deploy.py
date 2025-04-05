@@ -23,17 +23,17 @@ Deploy a documentation site using GitHub Pages.
 
 This command generates and deploys a Jekyll site (using the Minimal Mistakes theme) based on your project metadata in greening.yaml.
 
+It can also:
+- Automatically push the site to the `gh-pages` branch of your GitHub repository
+- Auto-configure Google Analytics if a tracking ID is defined in greening.yaml
+
 Options:
-  --no-push          Build the site locally but do not push to GitHub
-  --force            Force overwrite of existing GitHub Pages branch
-  --dry-run          Show what would happen without making changes
   --help             Show this help message and exit
 
 Examples:
   greening deploy
-  greening deploy --dry-run
-  greening deploy --no-push
 """)
+
 
 def _render_site_template(config: GreeningConfig):
     """

@@ -28,13 +28,17 @@ def help_new():
 
 Scaffold a new Python project using greening.yaml.
 
+This command uses your greening.yaml configuration to generate a full project structure based on a customizable template.
+It can also automatically:
+- Initialize a GitHub repository
+- Create and activate a virtual environment
+- Commit and push the project to GitHub
+
 Options:
-  --name TEXT         Name of the project (overrides config)
-  --template TEXT     Optional path or URL to a Cookiecutter template
-  --no-venv           Skip virtual environment setup
-  --no-git            Do not initialize a GitHub repository
-  --dry-run           Print actions without executing
   --help              Show this message and exit.
+
+Examples:
+  greening new
 """)
 
 def _scaffold_project(config: GreeningConfig):
