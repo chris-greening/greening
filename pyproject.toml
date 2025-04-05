@@ -13,12 +13,18 @@ dependencies = [
     "requests"
 ]
 
+[project.scripts]
+greening = "greening.cli:main"
+
 [build-system]
 requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
-[project.scripts]
-greening = "greening.cli:main"
+[tool.setuptools]
+include-package-data = true
 
 [tool.setuptools.packages.find]
 include = ["greening*"]
+
+[tool.setuptools.package-data]
+greening = ["templates/*", "templates/**/*"]
