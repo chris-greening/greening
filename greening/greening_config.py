@@ -1,7 +1,7 @@
 from pathlib import Path
 import yaml
 
-from greening._helpers import get_git_config_username, get_git_config_email
+from greening._helpers import get_git_config_username, get_git_config_email, generate_git_section
 
 class GreeningConfig:
     DEFAULT_YAML = f"""\
@@ -14,9 +14,7 @@ github_username: {get_git_config_username() or "your-github-username"}
 
 # Optional GitHub integration
 # Uncomment to push to a remote
-# git_remote: git@github.com:{get_git_config_username() or "your-github-username"}/my-greening-project.git
-push: false
-create_github_repo: false
+{generate_git_section()}
 
 venv:
    create: false         # Whether to create a virtual environment
@@ -54,5 +52,3 @@ venv:
 
     def to_cookiecutter_context(self):
         return self.data
-
-
