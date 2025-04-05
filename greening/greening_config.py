@@ -13,7 +13,9 @@ email: {get_git_config_email() or "your@email.com"}
 github_username: {get_git_config_username() or "your-github-username"}
 
 # Optional GitHub integration
-# Uncomment to push to a remote
+# To enable GitHub repo creation, set GITHUB_TOKEN in your environment.
+# This token must have repo scope.
+# For more info: https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token
 {generate_git_section()}
 
 venv:
