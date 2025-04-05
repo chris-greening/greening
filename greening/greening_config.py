@@ -1,20 +1,22 @@
 from pathlib import Path
 import yaml
 
+from greening._helpers import get_git_config_username, get_git_config_email, generate_git_section
+
 class GreeningConfig:
-    DEFAULT_YAML = """\
+    DEFAULT_YAML = f"""\
 # Project metadata
 project_name: My Greening Project
 project_slug: my_greening_project
 author_name: Your Name
-email: your@email.com
-github_username: your-github-handle
+email: {get_git_config_email() or "your@email.com"}
+github_username: {get_git_config_username() or "your-github-username"}
 
 # Optional GitHub integration
-# Uncomment to push to a remote
-# git_remote: git@github.com:your-name/my-greening-project.git
-push: false
-create_github_repo: false
+# To enable GitHub repo creation, set GITHUB_TOKEN in your environment.
+# This token must have repo scope.
+# For more info: https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token
+{generate_git_section()}
 
 venv:
    create: false         # Whether to create a virtual environment
