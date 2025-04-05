@@ -1,4 +1,3 @@
-```
 ---
 title: "How to Enable Google Analytics Tracking in Your Greening-Deployed Site"
 date: 2025-04-04
