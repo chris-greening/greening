@@ -53,6 +53,7 @@ def _deploy_rendered_site(rendered_path: Path, config: GreeningConfig):
     for item in rendered_path.iterdir():
         shutil.move(str(item), str(repo_root / item.name))
 
+    _run_git("git add .gitignore", cwd=repo_root)
     _run_git("git add .", cwd=repo_root)
     _run_git("git commit -m 'Deploy Jekyll site'", cwd=repo_root)
 

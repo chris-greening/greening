@@ -14,11 +14,11 @@ github_username: your-github-handle
 # Uncomment to push to a remote
 # git_remote: git@github.com:your-name/my-greening-project.git
 push: false
-# create_github_repo: false
+create_github_repo: false
 
-# venv:
-#   create: true         # Whether to create a virtual environment
-#   python: python3      # Python interpreter to use (optional)
+venv:
+   create: false         # Whether to create a virtual environment
+   python: python3      # Python interpreter to use (optional)
 
 # google_analytics: G-XXXXXXXXXX
 """
