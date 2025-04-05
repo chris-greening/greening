@@ -23,6 +23,20 @@ def new():
     _maybe_create_virtualenv(config)
     _maybe_initialize_git_repo(config)
 
+def help_new():
+    print("""Usage: greening new [OPTIONS]
+
+Scaffold a new Python project using greening.yaml.
+
+Options:
+  --name TEXT         Name of the project (overrides config)
+  --template TEXT     Optional path or URL to a Cookiecutter template
+  --no-venv           Skip virtual environment setup
+  --no-git            Do not initialize a GitHub repository
+  --dry-run           Print actions without executing
+  --help              Show this message and exit.
+""")
+
 def _scaffold_project(config: GreeningConfig):
     template_path = pkg_resources.files("greening") / "templates" / "python-package-template"
 
