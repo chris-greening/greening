@@ -6,8 +6,8 @@ from greening._commands.init import init, help_init
 from greening._commands.help import help as general_help
 
 def main():
-    if len(sys.argv) < 2:
-        print("Usage: greening <command> [args]")
+    if len(sys.argv) < 2 or sys.argv[1] in ("--help", "-h"):
+        general_help()
         sys.exit(1)
 
     command = sys.argv[1]
