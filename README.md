@@ -16,9 +16,17 @@ No boilerplate. No setup hell. Just instant polish.
 
 [!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/chrisgreening)
 
+## Table of Contents
+* [🍃 Why `greening`?](#why-greening)
+* [🌿 Key features](#key-features)
+* [🌲 Getting started](#getting-started)
+* [🌻 GitHub authentication](#github-authentication)
+* [🌴 Philosophy](#philosophy)
+* [🍀 Support](#support)
+
 ---
 
-## 🍃 Why `greening`?
+## 🍃 Why `greening`? <a name="why-greening"></a>
 
 Most devs never ship their tools — not because the code isn’t good, but because the surrounding friction is too high:
 
@@ -35,7 +43,7 @@ Most devs never ship their tools — not because the code isn’t good, but beca
 
 ---
 
-## 🌿 What It Does
+## 🌿 Key features <a name="key-features"></a>
 
 `greening` automates your project creation pipeline:
 
@@ -53,7 +61,7 @@ Additional features:
 
 ---
 
-## 🌲 Getting Started
+## 🌲 Getting started <a name="getting-started"></a>
 
 ### 1. Install `greening`
 
@@ -103,7 +111,7 @@ This builds a static site using your config and deploys it to the `gh-pages` bra
 
 ---
 
-## 🌻 GitHub Authentication
+## 🌻 GitHub authentication <a name="github-authentication"></a>
 
 To enable GitHub repo creation and pushing:
 
@@ -124,14 +132,14 @@ See this [blog post](https://chris-greening.github.io/greening/how-to/github/set
 
 ---
 
-## 🌴 Philosophy
+## 🌴 Philosophy <a name="philosophy"></a>
 
 `greening` is about **removing friction** and **surfacing the soul of your work** — fast.
 It empowers you to publish and polish your creative tools like they were real products, because they are.
 
 ---
 
-## 🍀 Created by @chris-greening
+## 🍀 Support <a name="support"></a>
 
 Reach out to me if you want to connect or have any questions and I will do my best to get back to you
 * Email:
