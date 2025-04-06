@@ -1,2 +1,4 @@
 recursive-include greening/templates *
+recursive-include greening/templates */.*
+recursive-include greening/templates */*/.*
 include greening/templates/**/.*
