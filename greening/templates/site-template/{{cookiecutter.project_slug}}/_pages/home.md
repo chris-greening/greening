@@ -12,20 +12,20 @@ feature_row:
   - image_path: images/red.PNG
     image_size: 100px
     alt: ""
-    title: "Expressive and consistent syntax"
-    excerpt: ""
+    title: "🧠 Clear Project Overview"
+    excerpt: "Give visitors a quick understanding of what this project does and why it exists. Use this space to introduce the purpose or goals of your work."
     url: ""
     btn_label: "Learn More"
   - image_path: images/green.PNG
     alt: ""
-    title: "Clear visualizations and animations"
-    excerpt: ""
+    title: "🚀 Quick Start Instructions"
+    excerpt: "Help users get up and running fast. Include a few simple steps or commands that explain how to install, build, or run the project."
     url: ""
     btn_label: "Learn More"
   - image_path: images/blue.PNG
     alt: "100% free"
-    title: "Completely free and open source"
-    excerpt: ""
+    title: "📚 Documentation-Ready"
+    excerpt: "This site is fully prepared for documentation, guides, and changelogs. Add pages, organize content, and make this project easy to explore."
     url: "/license/"
     btn_label: "Learn More"
 github:
