@@ -9,20 +9,20 @@ header:
 excerpt: {{ cookiecutter.project_slug }}
 
 feature_row:
-  - image_path: images/red.PNG
+  - image_path: images/project_overview.png
     image_size: 100px
     alt: ""
     title: "🧠 Clear Project Overview"
     excerpt: "Give visitors a quick understanding of what this project does and why it exists. Use this space to introduce the purpose or goals of your work."
     url: ""
     btn_label: "Learn More"
-  - image_path: images/green.PNG
+  - image_path: images/quickstart.png
     alt: ""
     title: "🚀 Quick Start Instructions"
     excerpt: "Help users get up and running fast. Include a few simple steps or commands that explain how to install, build, or run the project."
     url: ""
     btn_label: "Learn More"
-  - image_path: images/blue.PNG
+  - image_path: images/docs.png
     alt: "100% free"
     title: "📚 Documentation-Ready"
     excerpt: "This site is fully prepared for documentation, guides, and changelogs. Add pages, organize content, and make this project easy to explore."
