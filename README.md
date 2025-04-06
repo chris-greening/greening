@@ -21,6 +21,7 @@ No boilerplate. No setup hell. Just instant polish.
 * [🌿 Key features](#key-features)
 * [🌲 Getting started](#getting-started)
 * [🌻 GitHub authentication](#github-authentication)
+* [🌳 Blog posts](#blog)
 * [🌴 Philosophy](#philosophy)
 * [🍀 Support](#support)
 
@@ -131,6 +132,15 @@ source ~/.bashrc  # or ~/.zshrc
 See this [blog post](https://chris-greening.github.io/greening/how-to/github/setup/2024/04/04/how-to-get-github-token.html) for more
 
 ---
+
+## 🌳 Blog posts <a name="blog"></a>
+Check the blog out for more info [here](https://chris-greening.github.io/greening/blog/)
+
+- [Introducing Greening: Ship Beautiful Software, Fast](https://chris-greening.github.io/greening/2025/04/04/introducing-greening.html)
+- [Open Source is Soil: The Greening Philosophy](https://chris-greening.github.io/greening/2025/04/04/open-source-is-soil.html)
+- [The Philosophy Behind Greening: Developer Momentum](https://chris-greening.github.io/greening/2025/04/04/the-philosophy-behind-greening.html)
+- [How to Generate a GitHub Token for Pushing Repos with Greening](https://chris-greening.github.io/greening/how-to/github/setup/2024/04/04/how-to-get-github-token.html)
+- [How to Enable Google Analytics Tracking in Your Greening-Deployed Site](https://chris-greening.github.io/greening/how-to/2025/04/04/how-to-enable-google-analytics.html)
 
 ## 🌴 Philosophy <a name="philosophy"></a>
 
