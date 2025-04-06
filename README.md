@@ -18,7 +18,7 @@ No boilerplate. No setup hell. Just instant polish.
 
 ---
 
-## 🤔 Why `greening`?
+## 🍃 Why `greening`?
 
 Most devs never ship their tools — not because the code isn’t good, but because the surrounding friction is too high:
 
@@ -35,7 +35,7 @@ Most devs never ship their tools — not because the code isn’t good, but beca
 
 ---
 
-## ⚙️ What It Does
+## 🌿 What It Does
 
 `greening` automates your project creation pipeline:
 
@@ -53,7 +53,7 @@ Additional features:
 
 ---
 
-## 🚀 Getting Started
+## 🌲 Getting Started
 
 ### 1. Install `greening`
 
@@ -103,7 +103,7 @@ This builds a static site using your config and deploys it to the `gh-pages` bra
 
 ---
 
-## 🔐 GitHub Authentication
+## 🌻 GitHub Authentication
 
 To enable GitHub repo creation and pushing:
 
@@ -124,14 +124,14 @@ See this [blog post](https://chris-greening.github.io/greening/how-to/github/set
 
 ---
 
-## ✨ Philosophy
+## 🌴 Philosophy
 
 `greening` is about **removing friction** and **surfacing the soul of your work** — fast.
 It empowers you to publish and polish your creative tools like they were real products, because they are.
 
 ---
 
-## 💚 Created by @chris-greening
+## 🍀 Created by @chris-greening
 
 Reach out to me if you want to connect or have any questions and I will do my best to get back to you
 * Email:
@@ -142,3 +142,7 @@ Reach out to me if you want to connect or have any questions and I will do my be
   * [Chris Greening](https://www.linkedin.com/in/chris-greening-646411139/)
 * Personal contact form: 
   * [www.christophergreening.com](https://www.christophergreening.com/contact)
+
+<p align="center">
+  <img src="media/syntax_image.png" alt="Python logo with greenery growing around it", width="300px">
+</p>
