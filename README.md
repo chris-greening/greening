@@ -29,6 +29,10 @@ Most devs never ship their tools — not because the code isn’t good, but beca
 
 `greening` answers all of that in **one opinionated workflow**.
 
+<p align="center">
+  <img src="media/greening_usage_speed" alt="User typing in commands greening init, greening new, and greening deploy and rapidly deploying a project">
+</p>
+
 ---
 
 ## ⚙️ What It Does
