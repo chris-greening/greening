@@ -30,7 +30,7 @@ Most devs never ship their tools — not because the code isn’t good, but beca
 `greening` answers all of that in **one opinionated workflow**.
 
 <p align="center">
-  <img src="media/greening_usage_speed.gif" alt="User typing in commands greening init, greening new, and greening deploy and rapidly deploying a project">
+  <img src="media/greening_usage_speed.gif" alt="User typing in commands greening init, greening new, and greening deploy and rapidly deploying a project", width="600px">
 </p>
 
 ---
