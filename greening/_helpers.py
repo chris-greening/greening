@@ -4,7 +4,7 @@ import subprocess
 from typing import Union
 import os
 
-def _run_git(command: str, cwd: Path):
+def run_git(command: str, cwd: Path):
     """
     Runs a full git command string using shlex.split() for safety.
     e.g. 'git commit -m "message with spaces"'
