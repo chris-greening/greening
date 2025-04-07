@@ -9,7 +9,7 @@ import tempfile
 from typing import Union
 
 from greening.greening_config import GreeningConfig
-from greening._helpers import _run_git
+from greening._helpers import run_git
 
 def new():
     """
@@ -98,10 +98,10 @@ def _maybe_initialize_git_repo(config: GreeningConfig):
         return
 
     print("🔧 Initializing git repo...")
-    _run_git("git init", cwd=project_dir)
-    _run_git("git add .", cwd=project_dir)
-    _run_git("git commit -m 'Initial commit'", cwd=project_dir)
-    _run_git("git branch -M main", cwd=project_dir)
+    run_git("git init", cwd=project_dir)
+    run_git("git add .", cwd=project_dir)
+    run_git("git commit -m 'Initial commit'", cwd=project_dir)
+    run_git("git branch -M main", cwd=project_dir)
 
     git_remote = config.data.get("git_remote")
     create_repo = config.data.get("create_github_repo", False)
@@ -114,11 +114,11 @@ def _maybe_initialize_git_repo(config: GreeningConfig):
 
     if git_remote:
         print(f"🔗 Adding git remote: {git_remote}")
-        _run_git(f"git remote add origin {git_remote}", cwd=project_dir)
+        run_git(f"git remote add origin {git_remote}", cwd=project_dir)
 
         if push_enabled:
             print("🚀 Pushing to GitHub...")
-            _run_git("git push -u origin main", cwd=project_dir)
+            run_git("git push -u origin main", cwd=project_dir)
         else:
             print("⚠️  Push skipped (set push: true in greening.yaml to enable)")
 
