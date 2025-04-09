@@ -1,0 +1,235 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>greening.commands.deploy &mdash; Greening 0.4.10 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js?v=9b01a136"></script>
+      <script src="../../../_static/doctools.js?v=888ff710"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            Greening
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../generated/greening.html">greening</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../generated/greening.html#greening.hello"><code class="docutils literal notranslate"><span class="pre">hello()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../generated/greening.cli.html">greening.cli</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../generated/greening.cli.html#greening.cli.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../generated/greening.commands.html">greening.commands</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../generated/greening.commands.deploy.html">greening.commands.deploy</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../generated/greening.commands.deploy.html#greening.commands.deploy.deploy_site"><code class="docutils literal notranslate"><span class="pre">deploy_site()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../generated/greening.commands.deploy.html#greening.commands.deploy.help_deploy"><code class="docutils literal notranslate"><span class="pre">help_deploy()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../generated/greening.commands.help.html">greening.commands.help</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../generated/greening.commands.help.html#greening.commands.help.general_help"><code class="docutils literal notranslate"><span class="pre">general_help()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../generated/greening.commands.init.html">greening.commands.init</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../generated/greening.commands.init.html#greening.commands.init.help_init"><code class="docutils literal notranslate"><span class="pre">help_init()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../generated/greening.commands.init.html#greening.commands.init.init"><code class="docutils literal notranslate"><span class="pre">init()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../generated/greening.commands.new.html">greening.commands.new</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../generated/greening.commands.new.html#greening.commands.new.help_new"><code class="docutils literal notranslate"><span class="pre">help_new()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../generated/greening.commands.new.html#greening.commands.new.new"><code class="docutils literal notranslate"><span class="pre">new()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../generated/greening.greening_config.html">greening.greening_config</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../generated/greening.greening_config.html#greening.greening_config.GreeningConfig"><code class="docutils literal notranslate"><span class="pre">GreeningConfig</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../generated/greening.greening_config.html#greening.greening_config.GreeningConfig.DEFAULT_YAML"><code class="docutils literal notranslate"><span class="pre">GreeningConfig.DEFAULT_YAML</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../generated/greening.greening_config.html#greening.greening_config.GreeningConfig.__init__"><code class="docutils literal notranslate"><span class="pre">GreeningConfig.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../generated/greening.greening_config.html#greening.greening_config.GreeningConfig.as_cookiecutter_context"><code class="docutils literal notranslate"><span class="pre">GreeningConfig.as_cookiecutter_context()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../generated/greening.greening_config.html#greening.greening_config.GreeningConfig.get"><code class="docutils literal notranslate"><span class="pre">GreeningConfig.get()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../generated/greening.greening_config.html#greening.greening_config.GreeningConfig.to_cookiecutter_context"><code class="docutils literal notranslate"><span class="pre">GreeningConfig.to_cookiecutter_context()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../generated/greening.greening_config.html#greening.greening_config.GreeningConfig.write_default"><code class="docutils literal notranslate"><span class="pre">GreeningConfig.write_default()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../generated/greening.helpers.html">greening.helpers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../generated/greening.helpers.html#greening.helpers.generate_git_section"><code class="docutils literal notranslate"><span class="pre">generate_git_section()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../generated/greening.helpers.html#greening.helpers.get_git_config_email"><code class="docutils literal notranslate"><span class="pre">get_git_config_email()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../generated/greening.helpers.html#greening.helpers.get_git_config_username"><code class="docutils literal notranslate"><span class="pre">get_git_config_username()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../generated/greening.helpers.html#greening.helpers.has_github_token"><code class="docutils literal notranslate"><span class="pre">has_github_token()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../generated/greening.helpers.html#greening.helpers.run_git"><code class="docutils literal notranslate"><span class="pre">run_git()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Greening</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+          <li class="breadcrumb-item"><a href="../../greening.html">greening</a></li>
+      <li class="breadcrumb-item active">greening.commands.deploy</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for greening.commands.deploy</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">shutil</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">subprocess</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">tempfile</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">cookiecutter.main</span><span class="w"> </span><span class="kn">import</span> <span class="n">cookiecutter</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">importlib_resources</span><span class="w"> </span><span class="kn">import</span> <span class="n">files</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">greening.greening_config</span><span class="w"> </span><span class="kn">import</span> <span class="n">GreeningConfig</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">greening.helpers</span><span class="w"> </span><span class="kn">import</span> <span class="n">run_git</span>
+
+<div class="viewcode-block" id="deploy_site"><a class="viewcode-back" href="../../../generated/greening.commands.deploy.html#greening.commands.deploy.deploy_site">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">deploy_site</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Public entrypoint: Renders the site-template via Cookiecutter</span>
+<span class="sd">    and deploys it to the gh-pages branch of the current repo.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">config</span> <span class="o">=</span> <span class="n">GreeningConfig</span><span class="p">()</span>
+    <span class="n">_render_site_template</span><span class="p">(</span><span class="n">config</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="help_deploy"><a class="viewcode-back" href="../../../generated/greening.commands.deploy.html#greening.commands.deploy.help_deploy">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">help_deploy</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;Usage: greening deploy [OPTIONS]</span>
+
+<span class="s2">Deploy a documentation site using GitHub Pages.</span>
+
+<span class="s2">This command generates and deploys a Jekyll site (using the Minimal Mistakes theme) based on your project metadata in greening.yaml.</span>
+
+<span class="s2">It can also:</span>
+<span class="s2">- Automatically push the site to the `gh-pages` branch of your GitHub repository</span>
+<span class="s2">- Auto-configure Google Analytics if a tracking ID is defined in greening.yaml</span>
+
+<span class="s2">Options:</span>
+<span class="s2">  --help             Show this help message and exit</span>
+
+<span class="s2">Examples:</span>
+<span class="s2">  greening deploy</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">)</span></div>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_render_site_template</span><span class="p">(</span><span class="n">config</span><span class="p">:</span> <span class="n">GreeningConfig</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Renders the site template using Cookiecutter and deploys it.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">template_path</span> <span class="o">=</span> <span class="n">files</span><span class="p">(</span><span class="s2">&quot;greening&quot;</span><span class="p">)</span> <span class="o">/</span> <span class="s2">&quot;templates&quot;</span> <span class="o">/</span> <span class="s2">&quot;site-template&quot;</span>
+
+    <span class="k">with</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">TemporaryDirectory</span><span class="p">()</span> <span class="k">as</span> <span class="n">tmpdir</span><span class="p">:</span>
+        <span class="n">cookiecutter</span><span class="p">(</span>
+            <span class="nb">str</span><span class="p">(</span><span class="n">template_path</span><span class="p">),</span>
+            <span class="n">no_input</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">extra_context</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">to_cookiecutter_context</span><span class="p">(),</span>
+            <span class="n">output_dir</span><span class="o">=</span><span class="n">tmpdir</span><span class="p">,</span>
+            <span class="n">overwrite_if_exists</span><span class="o">=</span><span class="kc">True</span>
+        <span class="p">)</span>
+
+        <span class="n">rendered_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">tmpdir</span><span class="p">)</span> <span class="o">/</span> <span class="n">config</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;project_slug&quot;</span><span class="p">]</span>
+        <span class="n">_deploy_rendered_site</span><span class="p">(</span><span class="n">rendered_path</span><span class="p">,</span> <span class="n">config</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_deploy_rendered_site</span><span class="p">(</span><span class="n">rendered_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="n">GreeningConfig</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Checks out or creates the gh-pages branch, clears the working tree,</span>
+<span class="sd">    replaces it with the rendered site, commits and optionally pushes.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">repo_root</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">parent</span>
+    <span class="n">should_push</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;push&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">run_git</span><span class="p">(</span><span class="s2">&quot;git rev-parse --verify gh-pages&quot;</span><span class="p">,</span> <span class="n">cwd</span><span class="o">=</span><span class="n">repo_root</span><span class="p">)</span>
+        <span class="n">run_git</span><span class="p">(</span><span class="s2">&quot;git checkout gh-pages&quot;</span><span class="p">,</span> <span class="n">cwd</span><span class="o">=</span><span class="n">repo_root</span><span class="p">)</span>
+    <span class="k">except</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">CalledProcessError</span><span class="p">:</span>
+        <span class="n">run_git</span><span class="p">(</span><span class="s2">&quot;git checkout --orphan gh-pages&quot;</span><span class="p">,</span> <span class="n">cwd</span><span class="o">=</span><span class="n">repo_root</span><span class="p">)</span>
+
+    <span class="n">run_git</span><span class="p">(</span><span class="s2">&quot;git rm -rf .&quot;</span><span class="p">,</span> <span class="n">cwd</span><span class="o">=</span><span class="n">repo_root</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">rendered_path</span><span class="o">.</span><span class="n">iterdir</span><span class="p">():</span>
+        <span class="n">shutil</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">item</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">repo_root</span> <span class="o">/</span> <span class="n">item</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
+
+    <span class="n">run_git</span><span class="p">(</span><span class="s2">&quot;git add .gitignore&quot;</span><span class="p">,</span> <span class="n">cwd</span><span class="o">=</span><span class="n">repo_root</span><span class="p">)</span>
+    <span class="n">run_git</span><span class="p">(</span><span class="s2">&quot;git add .&quot;</span><span class="p">,</span> <span class="n">cwd</span><span class="o">=</span><span class="n">repo_root</span><span class="p">)</span>
+    <span class="n">run_git</span><span class="p">(</span><span class="s2">&quot;git commit -m &#39;Deploy Jekyll site&#39;&quot;</span><span class="p">,</span> <span class="n">cwd</span><span class="o">=</span><span class="n">repo_root</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">should_push</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;🚀 Pushing gh-pages to origin...&quot;</span><span class="p">)</span>
+        <span class="n">run_git</span><span class="p">(</span><span class="s2">&quot;git push -f origin gh-pages&quot;</span><span class="p">,</span> <span class="n">cwd</span><span class="o">=</span><span class="n">repo_root</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;⚠️  Push skipped (set push: true in greening.yaml to enable)&quot;</span><span class="p">)</span>
+
+    <span class="n">run_git</span><span class="p">(</span><span class="s2">&quot;git checkout main&quot;</span><span class="p">,</span> <span class="n">cwd</span><span class="o">=</span><span class="n">repo_root</span><span class="p">)</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Chris Greening.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
