@@ -1,29 +1,8 @@
-greening.greening\_config
-=========================
+greening.greening_config
+========================
 
 .. automodule:: greening.greening_config
-
-   
-   
-   
-
-   
-   
-   
-
-   
-   
-   .. rubric:: Classes
-
-   .. autosummary::
-   
-      GreeningConfig
-   
-   
-
-   
-   
-   
-
-
+   :members:
+   :undoc-members:
+   :show-inheritance:
 

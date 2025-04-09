@@ -2,28 +2,7 @@ greening.cli
 ============
 
 .. automodule:: greening.cli
-
-   
-   
-   
-
-   
-   
-   .. rubric:: Functions
-
-   .. autosummary::
-   
-      main
-   
-   
-
-   
-   
-   
-
-   
-   
-   
-
-
+   :members:
+   :undoc-members:
+   :show-inheritance:
 
