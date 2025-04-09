@@ -7,7 +7,7 @@ import tempfile
 
 import pytest
 
-from greening._commands.deploy import deploy_site
+from greening.commands.deploy import deploy_site
 
 @pytest.fixture
 def temp_git_repo(monkeypatch):

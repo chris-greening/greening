@@ -9,7 +9,7 @@ import tempfile
 from typing import Union
 
 from greening.greening_config import GreeningConfig
-from greening._helpers import run_git
+from greening.helpers import run_git
 
 def new():
     """

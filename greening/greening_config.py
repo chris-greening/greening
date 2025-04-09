@@ -1,7 +1,7 @@
 from pathlib import Path
 import yaml
 
-from greening._helpers import get_git_config_username, get_git_config_email, generate_git_section
+from greening.helpers import get_git_config_username, get_git_config_email, generate_git_section
 
 class GreeningConfig:
     DEFAULT_YAML = f"""\
