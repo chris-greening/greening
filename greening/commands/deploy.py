@@ -6,7 +6,7 @@ from cookiecutter.main import cookiecutter
 from importlib_resources import files
 
 from greening.greening_config import GreeningConfig
-from greening.helpers import _run_git
+from greening.helpers import run_git
 
 def deploy_site():
     """
@@ -62,24 +62,24 @@ def _deploy_rendered_site(rendered_path: Path, config: GreeningConfig):
     should_push = config.data.get("push", False)
 
     try:
-        _run_git("git rev-parse --verify gh-pages", cwd=repo_root)
-        _run_git("git checkout gh-pages", cwd=repo_root)
+        run_git("git rev-parse --verify gh-pages", cwd=repo_root)
+        run_git("git checkout gh-pages", cwd=repo_root)
     except subprocess.CalledProcessError:
-        _run_git("git checkout --orphan gh-pages", cwd=repo_root)
+        run_git("git checkout --orphan gh-pages", cwd=repo_root)
 
-    _run_git("git rm -rf .", cwd=repo_root)
+    run_git("git rm -rf .", cwd=repo_root)
 
     for item in rendered_path.iterdir():
         shutil.move(str(item), str(repo_root / item.name))
 
-    _run_git("git add .gitignore", cwd=repo_root)
-    _run_git("git add .", cwd=repo_root)
-    _run_git("git commit -m 'Deploy Jekyll site'", cwd=repo_root)
+    run_git("git add .gitignore", cwd=repo_root)
+    run_git("git add .", cwd=repo_root)
+    run_git("git commit -m 'Deploy Jekyll site'", cwd=repo_root)
 
     if should_push:
         print("🚀 Pushing gh-pages to origin...")
-        _run_git("git push -f origin gh-pages", cwd=repo_root)
+        run_git("git push -f origin gh-pages", cwd=repo_root)
     else:
         print("⚠️  Push skipped (set push: true in greening.yaml to enable)")
 
-    _run_git("git checkout main", cwd=repo_root)
+    run_git("git checkout main", cwd=repo_root)

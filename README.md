@@ -16,9 +16,18 @@ No boilerplate. No setup hell. Just instant polish.
 
 [!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/chrisgreening)
 
+## Table of Contents
+* [🍃 Why `greening`?](#why-greening)
+* [🌿 Key features](#key-features)
+* [🌲 Getting started](#getting-started)
+* [🌻 GitHub authentication](#github-authentication)
+* [🌳 Blog posts](#blog)
+* [🌴 Philosophy](#philosophy)
+* [🍀 Support](#support)
+
 ---
 
-## 🤔 Why `greening`?
+## 🍃 Why `greening`? <a name="why-greening"></a>
 
 Most devs never ship their tools — not because the code isn’t good, but because the surrounding friction is too high:
 
@@ -35,7 +44,7 @@ Most devs never ship their tools — not because the code isn’t good, but beca
 
 ---
 
-## ⚙️ What It Does
+## 🌿 Key features <a name="key-features"></a>
 
 `greening` automates your project creation pipeline:
 
@@ -53,7 +62,7 @@ Additional features:
 
 ---
 
-## 🚀 Getting Started
+## 🌲 Getting started <a name="getting-started"></a>
 
 ### 1. Install `greening`
 
@@ -103,7 +112,7 @@ This builds a static site using your config and deploys it to the `gh-pages` bra
 
 ---
 
-## 🔐 GitHub Authentication
+## 🌻 GitHub authentication <a name="github-authentication"></a>
 
 To enable GitHub repo creation and pushing:
 
@@ -124,14 +133,23 @@ See this [blog post](https://chris-greening.github.io/greening/how-to/github/set
 
 ---
 
-## ✨ Philosophy
+## 🌳 Blog posts <a name="blog"></a>
+Check the blog out for more info [here](https://chris-greening.github.io/greening/blog/)
+
+- [Introducing Greening: Ship Beautiful Software, Fast](https://chris-greening.github.io/greening/2025/04/04/introducing-greening.html)
+- [Open Source is Soil: The Greening Philosophy](https://chris-greening.github.io/greening/2025/04/04/open-source-is-soil.html)
+- [The Philosophy Behind Greening: Developer Momentum](https://chris-greening.github.io/greening/2025/04/04/the-philosophy-behind-greening.html)
+- [How to Generate a GitHub Token for Pushing Repos with Greening](https://chris-greening.github.io/greening/how-to/github/setup/2024/04/04/how-to-get-github-token.html)
+- [How to Enable Google Analytics Tracking in Your Greening-Deployed Site](https://chris-greening.github.io/greening/how-to/2025/04/04/how-to-enable-google-analytics.html)
+
+## 🌴 Philosophy <a name="philosophy"></a>
 
 `greening` is about **removing friction** and **surfacing the soul of your work** — fast.
 It empowers you to publish and polish your creative tools like they were real products, because they are.
 
 ---
 
-## 💚 Created by @chris-greening
+## 🍀 Support <a name="support"></a>
 
 Reach out to me if you want to connect or have any questions and I will do my best to get back to you
 * Email:
@@ -142,3 +160,7 @@ Reach out to me if you want to connect or have any questions and I will do my be
   * [Chris Greening](https://www.linkedin.com/in/chris-greening-646411139/)
 * Personal contact form: 
   * [www.christophergreening.com](https://www.christophergreening.com/contact)
+
+<p align="center">
+  <img src="media/syntax_image.png" alt="Python logo with greenery growing around it", width="300px">
+</p>
