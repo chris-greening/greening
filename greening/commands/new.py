@@ -1,3 +1,12 @@
+"""
+Handles the `greening new` command.
+
+This module provides the core logic to scaffold a new project using the
+configuration defined in `greening.yaml`. It supports project generation
+via Cookiecutter, optional virtual environment setup, and Git/GitHub
+initialization and push.
+"""
+
 import os
 import requests
 import subprocess
@@ -11,11 +20,13 @@ from typing import Union
 from greening.greening_config import GreeningConfig
 from greening.helpers import run_git
 
-def new():
+def new() -> None:
     """
-    Public entrypoint: Scaffolds a new project in the current directory,
-    initializes Git, optionally creates a virtual environment,
-    and optionally pushes to a remote.
+    Scaffolds a new project using `greening.yaml`, initializes Git,
+    optionally creates a virtual environment, and optionally pushes
+    to a GitHub remote.
+
+    This is the public entry point used by `greening new`.
     """
     config = GreeningConfig()
     print("🧪 Final context passed to Cookiecutter:")
@@ -23,7 +34,13 @@ def new():
     _maybe_create_virtualenv(config)
     _maybe_initialize_git_repo(config)
 
-def help_new():
+def help_new() -> None:
+    """
+    Displays help text for the `greening new` CLI command.
+
+    Prints usage instructions and configuration-based behavior such as
+    GitHub repo creation, virtual environment setup, and project scaffolding.
+    """
     print("""Usage: greening new [OPTIONS]
 
 Scaffold a new Python project using greening.yaml.
@@ -41,7 +58,7 @@ Examples:
   greening new
 """)
 
-def _scaffold_project(config: GreeningConfig):
+def _scaffold_project(config: GreeningConfig) -> None:
     template_path = files("greening") / "templates" / "python-package-template"
 
     with tempfile.TemporaryDirectory() as tmpdir:
@@ -67,9 +84,20 @@ def _scaffold_project(config: GreeningConfig):
 
         print(f"✅ Project files copied into {config.path.parent}")
 
-def _maybe_create_virtualenv(config: GreeningConfig):
+def _maybe_create_virtualenv(config: GreeningConfig) -> None:
     """
-    Creates a virtual environment at 'venv/' if 'venv.create' is true in the config.
+    Creates a virtual environment at `venv/` if enabled in `greening.yaml`.
+
+    Parameters
+    ----------
+    config : GreeningConfig
+        The parsed greening.yaml configuration which may include a 'venv' block
+        with `create` and `python` settings.
+
+    Notes
+    -----
+    Uses `subprocess.run` to invoke `python -m venv`. If the virtual environment
+    already exists or is disabled, no action is taken.
     """
     venv_config = config.data.get("venv", {})
     if not venv_config.get("create", False):
@@ -88,9 +116,21 @@ def _maybe_create_virtualenv(config: GreeningConfig):
     except subprocess.CalledProcessError as e:
         print(f"❌ Failed to create virtual environment: {e}")
 
-def _maybe_initialize_git_repo(config: GreeningConfig):
+def _maybe_initialize_git_repo(config: GreeningConfig) -> None:
     """
-    Initializes a Git repository and pushes to remote if specified.
+    Initializes a Git repository in the current project directory and optionally
+    creates a remote GitHub repo and pushes to it.
+
+    Parameters
+    ----------
+    config : GreeningConfig
+        The parsed greening.yaml configuration, which may include flags for
+        GitHub repo creation, remote addition, and pushing to origin.
+
+    Notes
+    -----
+    This function uses `run_git` to perform Git operations. If a `.git` folder
+    already exists, the function exits early.
     """
     project_dir = config.path.parent
 
@@ -124,7 +164,24 @@ def _maybe_initialize_git_repo(config: GreeningConfig):
 
 def _maybe_create_github_repo(config: GreeningConfig) -> Union[str, None]:
     """
-    Creates a GitHub repo using the GITHUB_TOKEN.
+    Creates a GitHub repository using the GitHub API and returns the remote URL.
+
+    Parameters
+    ----------
+    config : GreeningConfig
+        The parsed greening.yaml configuration, including the GitHub username
+        and project slug for repository creation.
+
+    Returns
+    -------
+    str or None
+        The SSH remote URL for the created repository, or None if creation fails
+        or required fields are missing.
+
+    Notes
+    -----
+    Requires a valid `GITHUB_TOKEN` in the environment. If the repository already
+    exists, returns the expected Git URL without re-creating it.
     """
     token = os.getenv("GITHUB_TOKEN")
     username = config.data.get("github_username")
