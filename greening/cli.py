@@ -1,9 +1,9 @@
 import sys
 
-from greening._commands.new import new, help_new
-from greening._commands.deploy import deploy_site, help_deploy
-from greening._commands.init import init, help_init
-from greening._commands.help import general_help
+from greening.commands.new import new, help_new
+from greening.commands.deploy import deploy_site, help_deploy
+from greening.commands.init import init, help_init
+from greening.commands.help import general_help
 
 def main():
     if len(sys.argv) < 2 or sys.argv[1] in ("--help", "-h"):

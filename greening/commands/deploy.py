@@ -6,7 +6,7 @@ from cookiecutter.main import cookiecutter
 from importlib_resources import files
 
 from greening.greening_config import GreeningConfig
-from greening._helpers import _run_git
+from greening.helpers import _run_git
 
 def deploy_site():
     """
