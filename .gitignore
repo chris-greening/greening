@@ -4,10 +4,8 @@ _site
 .jekyll-metadata
 vendor
 
-spyrograph/
 test.py
 
-build/
 dist/
 *.egg-info/
 tests/
