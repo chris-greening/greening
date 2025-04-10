@@ -22,6 +22,10 @@ class DummyConfig:
         }
         self.path = tmp_path / "greening.yaml"
 
+    def to_cookiecutter_context(self):
+        # Return whatever cookiecutter would use
+        return self.data
+
 @pytest.fixture
 def dummy_config(tmp_path):
     return DummyConfig(tmp_path)
@@ -72,3 +76,33 @@ def test_git_initialization_when_git_missing(dummy_config, tmp_path, mocker):
     assert "git add ." in calls
     assert "git commit -m 'Initial commit'" in calls
     assert "git branch -M main" in calls
+
+def test_scaffold_project_calls_cookiecutter(tmp_path, dummy_config, mocker):
+    dummy_config.path = tmp_path / "greening.yaml"
+    dummy_config.data["project_slug"] = "testproject"
+
+    rendered_path = tmp_path / "testproject"
+    rendered_path.mkdir()
+    (rendered_path / "README.md").write_text("# test")
+
+    # Patch cookiecutter so it doesn't run
+    mocker.patch("greening.commands.new.cookiecutter")
+
+    # Patch importlib_resources.files
+    mocker.patch("greening.commands.new.files", return_value=tmp_path)
+
+    # ✅ Patch tempfile.TemporaryDirectory to return tmp_path
+    mock_tempdir = mocker.patch("greening.commands.new.tempfile.TemporaryDirectory")
+
+    class FakeTempDir:
+        def __enter__(self): return str(tmp_path)
+        def __exit__(self, *args): pass
+
+    mock_tempdir.return_value = FakeTempDir()
+
+    # Run it
+    new._scaffold_project(dummy_config)
+
+    moved_file = dummy_config.path.parent / "README.md"
+    assert moved_file.exists()
+    assert moved_file.read_text() == "# test"
