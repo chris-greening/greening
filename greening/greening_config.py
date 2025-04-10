@@ -18,6 +18,9 @@ github_username: {get_git_config_username() or "your-github-username"}
 # For more info: https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token
 {generate_git_section()}
 
+docs:
+  create: true
+
 venv:
    create: false         # Whether to create a virtual environment
    python: python3      # Python interpreter to use (optional)
@@ -54,3 +57,7 @@ venv:
 
     def to_cookiecutter_context(self):
         return self.data
+
+    @property
+    def docs_enabled(self):
+        return self.data.get("docs", {}).get("init", False)
