@@ -1,17 +1,17 @@
-{{ fullname }}
-{{ underline }}
+{{ '{{' }} fullname {{ '}}' }}
+{{ '{{' }} underline {{ '}}' }}
 
-.. automodule:: {{ fullname }}
+.. automodule:: {{ '{{' }} fullname {{ '}}' }}
    :members:
    :undoc-members:
    :show-inheritance:
 
-{% if modules %}
+{{ '{%' }} if modules {{ '%}' }}
 .. autosummary::
-   :toctree: {{ toctree }}
+   :toctree: {{ '{{' }} toctree {{ '}}' }}
    :recursive:
 
-{% for item in modules %}
-   {{ item }}
-{% endfor %}
-{% endif %}
+{{ '{%' }} for item in modules {{ '%}' }}
+   {{ '{{' }} item {{ '}}' }}
+{{ '{%' }} endfor {{ '%}' }}
+{{ '{%' }} endif {{ '%}' }}
