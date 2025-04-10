@@ -6,6 +6,7 @@ vendor
 
 test.py
 
+build/
 dist/
 *.egg-info/
 tests/
