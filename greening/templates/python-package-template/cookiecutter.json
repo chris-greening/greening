@@ -4,7 +4,6 @@
   "author_name": "Your Name",
   "email": "your@email.com",
   "github_username": "your-github-username",
-  "docs_init": "true",
   "venv_create": "false",
   "python": "python3"
 }

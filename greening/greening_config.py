@@ -18,9 +18,6 @@ github_username: {get_git_config_username() or "your-github-username"}
 # For more info: https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token
 {generate_git_section()}
 
-docs:
-    init: true
-
 venv:
     create: false         # Whether to create a virtual environment
     python: python3      # Python interpreter to use (optional)
@@ -69,7 +66,6 @@ venv:
             "github_username": self.data.get("github_username"),
             "author_name": self.data.get("author_name"),
             "email": self.data.get("email"),
-            "docs_init": str(self.data.get("docs", {}).get("create", False)).lower(),
             "venv_create": str(self.data.get("venv", {}).get("create", False)).lower(),
             "python": self.data.get("venv", {}).get("python", "python3")
         }
