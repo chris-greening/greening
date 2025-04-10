@@ -10,4 +10,4 @@ main:
   - title : "License"
     url: "/license/"
   - title : "Docs"
-    url: "/docs/"
+    url: "https://greening.readthedocs.io/en/latest/generated/greening.html#module-greening"
