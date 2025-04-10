@@ -61,3 +61,15 @@ venv:
     @property
     def docs_enabled(self):
         return self.data.get("docs", {}).get("init", False)
+
+    def to_cookiecutter_context(self):
+        return {
+            "project_name": self.data.get("project_name"),
+            "project_slug": self.data.get("project_slug"),
+            "github_username": self.data.get("github_username"),
+            "author_name": self.data.get("author_name"),
+            "email": self.data.get("email"),
+            "docs_init": str(self.data.get("docs", {}).get("create", False)).lower(),
+            "venv_create": str(self.data.get("venv", {}).get("create", False)).lower(),
+            "python": self.data.get("venv", {}).get("python", "python3")
+        }
