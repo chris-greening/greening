@@ -19,11 +19,11 @@ github_username: {get_git_config_username() or "your-github-username"}
 {generate_git_section()}
 
 docs:
-  create: true
+    init: true
 
 venv:
-   create: false         # Whether to create a virtual environment
-   python: python3      # Python interpreter to use (optional)
+    create: false         # Whether to create a virtual environment
+    python: python3      # Python interpreter to use (optional)
 
 # google_analytics: G-XXXXXXXXXX
 """

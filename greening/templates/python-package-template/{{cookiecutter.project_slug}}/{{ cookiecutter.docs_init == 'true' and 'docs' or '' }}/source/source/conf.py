@@ -13,13 +13,13 @@
 import os
 import sys
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../../')))
-release = '0.4.10'
+release = '0.1.0'
 
 # -- Project information -----------------------------------------------------
 
-project = 'Greening'
-copyright = '2025, Chris Greening'
-author = 'Chris Greening'
+project = '{{ cookiecutter.project_name }}'
+author = '{{ cookiecutter.author_name }}'
+copyright = '2025, {{ cookiecutter.author_name }}'
 
 
 # -- General configuration ---------------------------------------------------
@@ -32,6 +32,7 @@ extensions = [
     'sphinx.ext.napoleon',     # for Google/NumPy style docstrings
     'sphinx.ext.viewcode',
     'sphinx.ext.githubpages',  # adds .nojekyll for GitHub Pages
+    'sphinx.ext.autosummary'
 ]
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -54,6 +55,8 @@ autodoc_default_options = {
     'special-members': '__init__'
 }
 autodoc_typehints = "description"
+autosummary_generate = True
+
 html_theme = 'sphinx_rtd_theme'
 html_theme_options = {
     "collapse_navigation": False,
@@ -64,6 +67,3 @@ html_theme_options = {
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
-
-extensions += ['sphinx.ext.autosummary']
-autosummary_generate = True
