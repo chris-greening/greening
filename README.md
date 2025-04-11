@@ -6,8 +6,8 @@
 
 `greening` is an opinionated, full-stack project automation tool for solo developers and creative coders.
 
-With just a few commands, you can scaffold a production-ready Python package — complete with docs, tests, GitHub Actions workflows, PyPI packaging, and an auto-deployed GitHub Pages site.
-No boilerplate. No setup hell. Just instant polish.
+With just a few commands, you can scaffold a production-ready Python package complete with docs, tests, GitHub Actions workflows, PyPI packaging, and an auto-deployed GitHub Pages site.
+No boilerplate or setup hell, just instant polish.
 
 [![Downloads](https://static.pepy.tech/personalized-badge/greening?period=total&units=international_system&left_color=grey&right_color=brightgreen&left_text=downloads)](https://pepy.tech/project/greening)
 [![Issues](https://img.shields.io/github/issues/chris-greening/greening)](https://github.com/chris-greening/greening/issues)
@@ -29,7 +29,7 @@ No boilerplate. No setup hell. Just instant polish.
 
 ## 🍃 Why `greening`? <a name="why-greening"></a>
 
-Most devs never ship their tools — not because the code isn’t good, but because the surrounding friction is too high:
+Most devs never ship their tools. Not because the code isn’t good, but because the surrounding friction is too high:
 
 - How do I structure the project?
 - How do I set up CI/CD, tests, and linting?
@@ -48,9 +48,9 @@ Most devs never ship their tools — not because the code isn’t good, but beca
 
 `greening` automates your project creation pipeline:
 
-✅ `greening init` – generates a starter `greening.yaml` config file
-✅ `greening new` – scaffolds your entire Python project in-place
-✅ `greening deploy` – builds and pushes a polished GitHub Pages site
+✅ `greening init` - generates a starter `greening.yaml` config file
+✅ `greening new` - scaffolds your entire Python project in-place
+✅ `greening deploy` - builds and pushes a polished GitHub Pages site
 
 Additional features:
 
@@ -144,7 +144,7 @@ Check the blog out for more info [here](https://chris-greening.github.io/greenin
 
 ## 🌴 Philosophy <a name="philosophy"></a>
 
-`greening` is about **removing friction** and **surfacing the soul of your work** — fast.
+`greening` is about **removing friction** and **surfacing the soul of your work** fast.
 It empowers you to publish and polish your creative tools like they were real products, because they are.
 
 ---
