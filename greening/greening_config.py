@@ -19,8 +19,8 @@ github_username: {get_git_config_username() or "your-github-username"}
 {generate_git_section()}
 
 venv:
-   create: false         # Whether to create a virtual environment
-   python: python3      # Python interpreter to use (optional)
+    create: false         # Whether to create a virtual environment
+    python: python3      # Python interpreter to use (optional)
 
 # google_analytics: G-XXXXXXXXXX
 """
@@ -54,3 +54,18 @@ venv:
 
     def to_cookiecutter_context(self):
         return self.data
+
+    @property
+    def docs_enabled(self):
+        return self.data.get("docs", {}).get("init", False)
+
+    def to_cookiecutter_context(self):
+        return {
+            "project_name": self.data.get("project_name"),
+            "project_slug": self.data.get("project_slug"),
+            "github_username": self.data.get("github_username"),
+            "author_name": self.data.get("author_name"),
+            "email": self.data.get("email"),
+            "venv_create": str(self.data.get("venv", {}).get("create", False)).lower(),
+            "python": self.data.get("venv", {}).get("python", "python3")
+        }
