@@ -151,6 +151,7 @@ A focused, opinionated roadmap toward making Greening the most seamless develope
 - Plugin ecosystem to support custom features, commands, etc. within the greening command-line tool
 - Custom template support for creating tailor-made templates
 - Idempotent execution so commands are safe to run repeatedly with no unexpected side effects
+- Cleanup partial builds in the event of a command failure to prevent half-baked launches
 
 ---
 
