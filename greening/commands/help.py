@@ -1,4 +1,15 @@
-def general_help():
+def general_help() -> None:
+    """
+    Print a general overview of Greening's CLI commands.
+
+    Displays descriptions of all available subcommands, including:
+    - `init`: Generates a greening.yaml configuration file
+    - `new`: Scaffolds a new project using greening.yaml and Cookiecutter
+    - `deploy`: Builds and deploys a static site to the `gh-pages` branch
+    - `help`: Prints this overview help message
+
+    Includes GitHub project link for reference.
+    """
     print("""
 🌿 Greening — Ship Beautiful Software Fast
 -----------------------------------------
