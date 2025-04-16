@@ -1,6 +1,17 @@
 from greening.greening_config import GreeningConfig
 
-def init():
+def init() -> None:
+    """
+    Initialize a `greening.yaml` configuration file in the current directory.
+
+    This function checks whether `greening.yaml` already exists.
+    If not, it creates a default configuration using environment-aware
+    and git-aware introspection (e.g., GitHub username/email and token).
+
+    - Detects git username and email via `git config`
+    - Checks for presence of a `GITHUB_TOKEN` environment variable
+    - Writes a default config only if one does not already exist
+    """
     config = GreeningConfig()
 
     if config.path.exists():
@@ -8,7 +19,13 @@ def init():
     else:
         config.write_default()
 
-def help_init():
+def help_init() -> None:
+    """
+    Print usage information for the `greening init` command.
+
+    This help text describes how `greening init` sets up an environment-aware
+    greening.yaml configuration file, with examples and options.
+    """
     print("""Usage: greening init
 
 Initialize a new greening.yaml config file in the current directory.
