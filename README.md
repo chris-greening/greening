@@ -22,7 +22,7 @@ No boilerplate or setup hell, just instant polish.
 * [🌲 Getting started](#getting-started)
 * [🌻 GitHub authentication](#github-authentication)
 * [🌳 Blog posts](#blog)
-* [🌴 Philosophy](#philosophy)
+* [🌴 Roadmap](#roadmap)
 * [🍀 Support](#support)
 
 ---
@@ -59,7 +59,9 @@ Additional features:
 - Optionally pushes to GitHub (main branch)
 - Injects metadata throughout the project using Cookiecutter
 - Uses Jekyll + Minimal Mistakes for clean, brandable documentation
-
+- Auto-documentation with Sphinx + Read the Docs support
+- Automatically wire in Google Analytics if configured
+  
 ---
 
 ## 🌲 Getting started <a name="getting-started"></a>
@@ -142,10 +144,13 @@ Check the blog out for more info [here](https://chris-greening.github.io/greenin
 - [How to Generate a GitHub Token for Pushing Repos with Greening](https://chris-greening.github.io/greening/how-to/github/setup/2024/04/04/how-to-get-github-token.html)
 - [How to Enable Google Analytics Tracking in Your Greening-Deployed Site](https://chris-greening.github.io/greening/how-to/2025/04/04/how-to-enable-google-analytics.html)
 
-## 🌴 Philosophy <a name="philosophy"></a>
+## 🌴 Roadmap <a name="roadmap"></a>
 
-`greening` is about **removing friction** and **surfacing the soul of your work** fast.
-It empowers you to publish and polish your creative tools like they were real products, because they are.
+A focused, opinionated roadmap toward making Greening the most seamless developer automation tool for launching and shipping polished open source projects.
+
+- Plugin ecosystem to support custom features, commands, etc. within the greening command-line tool
+- Custom template support for creating tailor-made templates
+- Idempotent execution so commands are safe to run repeatedly with no unexpected side effects
 
 ---
 
