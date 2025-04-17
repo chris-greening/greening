@@ -5,7 +5,6 @@ def general_help() -> None:
     Displays descriptions of all available subcommands, including:
     - `init`: Generates a greening.yaml configuration file
     - `new`: Scaffolds a new project using greening.yaml and Cookiecutter
-    - `deploy`: Builds and deploys a static site to the `gh-pages` branch
     - `help`: Prints this overview help message
 
     Includes GitHub project link for reference.
@@ -25,11 +24,6 @@ Available Commands:
         - Optionally creates a virtual environment
         - Initializes Git
         - Optionally creates and pushes to a GitHub repo
-
-  greening deploy
-    → Builds and deploys a static site to the gh-pages branch:
-        - Renders the site template
-        - Commits and pushes to GitHub if configured
 
   greening help
     → Displays this help message.
