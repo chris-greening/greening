@@ -52,9 +52,6 @@ venv:
         self.path.write_text(self.DEFAULT_YAML)
         print(f"✅ Created default greening.yaml at {self.path}")
 
-    def to_cookiecutter_context(self):
-        return self.data
-
     @property
     def docs_enabled(self):
         return self.data.get("docs", {}).get("init", False)
@@ -67,5 +64,6 @@ venv:
             "author_name": self.data.get("author_name"),
             "email": self.data.get("email"),
             "venv_create": str(self.data.get("venv", {}).get("create", False)).lower(),
-            "python": self.data.get("venv", {}).get("python", "python3")
+            "python": self.data.get("venv", {}).get("python", "python3"),
+            "google_analytics": self.data.get("google_analytics", {}).get("G-XXXXXXXXXX")
         }

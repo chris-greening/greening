@@ -58,21 +58,40 @@ Examples:
   greening new
 """)
 
+from importlib_resources import files
+import tempfile
+import shutil
+import json
+from pathlib import Path
+from cookiecutter.main import cookiecutter
+from greening.greening_config import GreeningConfig
+
 def _scaffold_project(config: GreeningConfig) -> None:
+    # Locate package template
     template_path = files("greening") / "templates" / "python-package-template"
 
+    # Temporary workspace
     with tempfile.TemporaryDirectory() as tmpdir:
+        tmp_template = Path(tmpdir) / "template"
+        shutil.copytree(template_path, tmp_template)
+
+        # Inject dynamic cookiecutter.json
+        cookiecutter_json_path = tmp_template / "cookiecutter.json"
+        with open(cookiecutter_json_path, "w") as f:
+            json.dump(config.to_cookiecutter_context(), f, indent=2)
+
+        # Render project into second temp output location
+        tmp_output_dir = Path(tmpdir) / "output"
         cookiecutter(
-            str(template_path),
+            str(tmp_template),
             no_input=True,
-            extra_context=config.to_cookiecutter_context(),
-            output_dir=tmpdir,
+            output_dir=tmp_output_dir,
             overwrite_if_exists=True,
         )
 
-        rendered_path = Path(tmpdir) / config.data["project_slug"]
+        rendered_path = tmp_output_dir / config.data["project_slug"]
 
-        # 🔥 Move everything from rendered_path into current directory
+        # Move everything into the current working directory
         for item in rendered_path.iterdir():
             dest = config.path.parent / item.name
             if dest.exists():
@@ -83,6 +102,7 @@ def _scaffold_project(config: GreeningConfig) -> None:
             shutil.move(str(item), str(dest))
 
         print(f"✅ Project files copied into {config.path.parent}")
+        print("TEST")
 
 def _maybe_create_virtualenv(config: GreeningConfig) -> None:
     """
