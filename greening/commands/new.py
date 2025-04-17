@@ -16,6 +16,7 @@ from importlib_resources import files
 import shutil
 import tempfile
 from typing import Union
+import json
 
 from greening.greening_config import GreeningConfig
 from greening.helpers import run_git
@@ -33,6 +34,7 @@ def new() -> None:
     _scaffold_project(config)
     _maybe_create_virtualenv(config)
     _maybe_initialize_git_repo(config)
+    _maybe_render_site_template(config)
 
 def help_new() -> None:
     """
@@ -57,14 +59,6 @@ Options:
 Examples:
   greening new
 """)
-
-from importlib_resources import files
-import tempfile
-import shutil
-import json
-from pathlib import Path
-from cookiecutter.main import cookiecutter
-from greening.greening_config import GreeningConfig
 
 def _scaffold_project(config: GreeningConfig) -> None:
     # Locate package template
@@ -240,3 +234,60 @@ def _maybe_create_github_repo(config: GreeningConfig) -> Union[str, None]:
     else:
         print(f"❌ Failed to create repo: {response.status_code} - {response.text}")
         return None
+
+def _maybe_render_site_template(config: GreeningConfig):
+    """
+    Renders the site template using Cookiecutter with dynamic config injection.
+    """
+    if config.github_pages_enabled:
+        template_path = files("greening") / "templates" / "site-template"
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            tmp_template = Path(tmpdir) / "template"
+            shutil.copytree(template_path, tmp_template)
+
+            cookiecutter_json_path = tmp_template / "cookiecutter.json"
+            with open(cookiecutter_json_path, "w") as f:
+                json.dump(config.to_cookiecutter_context(), f, indent=2)
+
+            tmp_output_dir = Path(tmpdir) / "output"
+            cookiecutter(
+                str(tmp_template),
+                no_input=True,
+                output_dir=tmp_output_dir,
+                overwrite_if_exists=True
+            )
+
+            rendered_path = tmp_output_dir / config.data["project_slug"]
+            _deploy_rendered_site(rendered_path, config)
+
+def _deploy_rendered_site(rendered_path: Path, config: GreeningConfig):
+    """
+    Checks out or creates the gh-pages branch, clears the working tree,
+    replaces it with the rendered site, commits and optionally pushes.
+    """
+    repo_root = config.path.parent
+    should_push = config.data.get("push", False)
+
+    try:
+        run_git("git rev-parse --verify gh-pages", cwd=repo_root)
+        run_git("git checkout gh-pages", cwd=repo_root)
+    except subprocess.CalledProcessError:
+        run_git("git checkout --orphan gh-pages", cwd=repo_root)
+
+    run_git("git rm -rf .", cwd=repo_root)
+
+    for item in rendered_path.iterdir():
+        shutil.move(str(item), str(repo_root / item.name))
+
+    run_git("git add .gitignore", cwd=repo_root)
+    run_git("git add .", cwd=repo_root)
+    run_git("git commit -m 'Deploy Jekyll site'", cwd=repo_root)
+
+    if should_push:
+        print("🚀 Pushing gh-pages to origin...")
+        run_git("git push -f origin gh-pages", cwd=repo_root)
+    else:
+        print("⚠️  Push skipped (set push: true in greening.yaml to enable)")
+
+    run_git("git checkout main", cwd=repo_root)

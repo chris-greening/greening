@@ -22,6 +22,8 @@ venv:
     create: false         # Whether to create a virtual environment
     python: python3      # Python interpreter to use (optional)
 
+github_pages:
+  enabled: true
 # google_analytics: G-XXXXXXXXXX
 """
 
@@ -51,6 +53,10 @@ venv:
 
         self.path.write_text(self.DEFAULT_YAML)
         print(f"✅ Created default greening.yaml at {self.path}")
+
+    @property
+    def github_pages_enabled(self) -> bool:
+        return self.data.get("github_pages", {}).get("enabled", False)
 
     @property
     def docs_enabled(self):

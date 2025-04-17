@@ -50,10 +50,10 @@ Most devs never ship their tools. Not because the code isn’t good, but because
 
 ✅ `greening init` - generates a starter `greening.yaml` config file
 ✅ `greening new` - scaffolds your entire Python project in-place
-✅ `greening deploy` - builds and pushes a polished GitHub Pages site
 
 Additional features:
 
+- Builds and pushes a polished GitHub Pages site
 - Automatically initializes a Git repo
 - Optionally creates a GitHub repository via API
 - Optionally pushes to GitHub (main branch)
@@ -103,14 +103,6 @@ greening new
 ```
 
 `greening` will generate your project in-place and optionally push it to GitHub.
-
-### 4. Deploy the GitHub Pages site
-
-```
-greening deploy
-```
-
-This builds a static site using your config and deploys it to the `gh-pages` branch.
 
 ---
 
