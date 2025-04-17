@@ -64,5 +64,6 @@ venv:
             "author_name": self.data.get("author_name"),
             "email": self.data.get("email"),
             "venv_create": str(self.data.get("venv", {}).get("create", False)).lower(),
-            "python": self.data.get("venv", {}).get("python", "python3")
+            "python": self.data.get("venv", {}).get("python", "python3"),
+            "google_analytics": self.data.get("google_analytics", {}).get("G-XXXXXXXXXX")
         }
