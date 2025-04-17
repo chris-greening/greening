@@ -4,6 +4,7 @@ import tempfile
 from pathlib import Path
 from cookiecutter.main import cookiecutter
 from importlib_resources import files
+import json
 
 from greening.greening_config import GreeningConfig
 from greening.helpers import run_git
@@ -37,20 +38,29 @@ Examples:
 
 def _render_site_template(config: GreeningConfig):
     """
-    Renders the site template using Cookiecutter and deploys it.
+    Renders the site template using Cookiecutter with dynamic config injection.
     """
+    # 1. Locate the built-in site template
     template_path = files("greening") / "templates" / "site-template"
 
+    # 2. Copy to a temporary location
     with tempfile.TemporaryDirectory() as tmpdir:
+        tmp_template = Path(tmpdir) / "template"
+        shutil.copytree(template_path, tmp_template)
+
+        cookiecutter_json_path = tmp_template / "cookiecutter.json"
+        with open(cookiecutter_json_path, "w") as f:
+            json.dump(config.to_cookiecutter_context(), f, indent=2)
+
+        tmp_output_dir = Path(tmpdir) / "output"
         cookiecutter(
-            str(template_path),
+            str(tmp_template),
             no_input=True,
-            extra_context=config.to_cookiecutter_context(),
-            output_dir=tmpdir,
+            output_dir=tmp_output_dir,
             overwrite_if_exists=True
         )
 
-        rendered_path = Path(tmpdir) / config.data["project_slug"]
+        rendered_path = tmp_output_dir / config.data["project_slug"]
         _deploy_rendered_site(rendered_path, config)
 
 def _deploy_rendered_site(rendered_path: Path, config: GreeningConfig):
