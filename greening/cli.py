@@ -18,11 +18,6 @@ def main():
             help_new()
         else:
             new()
-    elif command == "deploy":
-        if "--help" in args:
-            help_deploy()
-        else:
-            deploy_site()
     elif command == "init":
         if "--help" in args:
             help_init()
@@ -33,8 +28,6 @@ def main():
             cmd = args[0]
             if cmd == "new":
                 help_new()
-            elif cmd == "deploy":
-                help_deploy()
             elif cmd == "init":
                 help_init()
             else:
