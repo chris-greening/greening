@@ -52,9 +52,6 @@ venv:
         self.path.write_text(self.DEFAULT_YAML)
         print(f"✅ Created default greening.yaml at {self.path}")
 
-    def to_cookiecutter_context(self):
-        return self.data
-
     @property
     def docs_enabled(self):
         return self.data.get("docs", {}).get("init", False)
