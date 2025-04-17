@@ -50,34 +50,6 @@ Examples:
 
 ---
 
-Ready to deploy a fully scaffolded GitHub Pages site with Jekyll?
-
-```bash
-greening deploy --help
-```
-
-Returns:
-
-```bash
-Usage: greening deploy [OPTIONS]
-
-Deploy a documentation site using GitHub Pages.
-
-This command generates and deploys a Jekyll site (using the Minimal Mistakes theme) based on your project metadata in greening.yaml.
-
-It can also:
-- Automatically push the site to the `gh-pages` branch of your GitHub repository
-- Auto-configure Google Analytics if a tracking ID is defined in greening.yaml
-
-Options:
-  --help              Show this help message and exit
-
-Examples:
-  greening deploy
-```
-
----
-
 Want to initialize your config?
 
 ```bash

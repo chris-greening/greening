@@ -20,8 +20,8 @@ Greening grew from that idea.
 
 ## What It Does
 
+- 📁 `greening init` generates a default YAML for configuring your project.
 - 📁 `greening new` creates a new project, scaffolds a clean structure, and optionally sets up Git, virtual environments, and GitHub remotes.
-- 🌐 `greening deploy` generates and deploys a beautiful Jekyll-based GitHub Pages site — perfect for project documentation.
 - 📊 Google Analytics integration? Just drop your tag into the config, and you're done.
 - ⚙️ Customizable YAML-based config with opinionated defaults that get out of your way.
 

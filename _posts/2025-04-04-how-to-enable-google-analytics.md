@@ -42,10 +42,10 @@ Replace `G-XXXXXXXXXX` with your actual tag.
 
 ## 🚀 Step 3: Deploy Your Site
 
-Run the following command to generate and publish your GitHub Pages site:
+Configure the YAML to generate and publish your GitHub Pages site:
 
 ```bash
-greening deploy
+greening new
 ```
 
 Greening will:
