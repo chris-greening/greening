@@ -18,10 +18,12 @@ github_username: {get_git_config_username() or "your-github-username"}
 # For more info: https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token
 {generate_git_section()}
 
+# Create a virtual environment using venv in the root of the project
 venv:
     create: false         # Whether to create a virtual environment
     python: python3      # Python interpreter to use (optional)
 
+# Auto-generate and deploy a Jekyll site on GitHub Pages
 github_pages:
   enabled: true
   # google_analytics: G-XXXXXXXXXX
