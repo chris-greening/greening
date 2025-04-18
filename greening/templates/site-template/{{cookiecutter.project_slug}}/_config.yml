@@ -52,6 +52,9 @@ plugins:
 #   linkedin         : "chris-greening-dev"
 #   twitter          : *twitter
 
+{% for key, value in globals().items() %}
+{{ key }}: {{ value }}
+{% endfor %}
 {% if cookiecutter.google_analytics | default(false) %}
 analytics:
   provider: "google-gtag" # false (default), "google", "google-universal", "custom"
