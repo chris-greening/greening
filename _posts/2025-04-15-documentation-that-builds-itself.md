@@ -51,7 +51,7 @@ Your code is documented. Your documentation is hosted. Everything just works.
 
 ---
 
-## 🪴 Summary
+## Summary
 
 No need for extra steps or boilerplate.
 
