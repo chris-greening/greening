@@ -1,7 +1,6 @@
 import sys
 
 from greening.commands.new import new, help_new
-from greening.commands.deploy import deploy_site, help_deploy
 from greening.commands.init import init, help_init
 from greening.commands.help import general_help
 
