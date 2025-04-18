@@ -24,7 +24,7 @@ venv:
 
 github_pages:
   enabled: true
-# google_analytics: G-XXXXXXXXXX
+  google_analytics: G-XXXXXXXXXX
 """
 
     def __init__(self, path: Path = Path.cwd() / "greening.yaml"):
