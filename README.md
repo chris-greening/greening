@@ -4,7 +4,7 @@
 
 # 🌱 Greening
 
-`greening` is an opinionated, full-stack project automation tool for solo developers and creative coders.
+`greening` is an opinionated, full-stack Project as Code automation tool for solo developers and creative coders.
 
 With just a few commands, you can scaffold a production-ready Python package complete with docs, tests, GitHub Actions workflows, PyPI packaging, and an auto-deployed GitHub Pages site.
 No boilerplate or setup hell, just instant polish.
